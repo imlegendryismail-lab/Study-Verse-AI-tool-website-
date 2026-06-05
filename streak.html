@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Study Streak | StudyVerse AI</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+
+<div class="logo">
+
+<div class="logo-symbol">
+<span class="core"></span>
+<span class="ring ring1"></span>
+<span class="ring ring2"></span>
+</div>
+
+<span class="logo-text">StudyVerse AI</span>
+
+</div>
+
+<div>
+
+<a href="index.html">Home</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="study.html">Timer</a>
+<a href="notes.html">Notes</a>
+
+</div>
+
+</nav>
+
+
+
+<!-- HERO -->
+<section class="hero">
+
+<h1 class="hero-title">
+🔥 Study Streak Tracker
+</h1>
+
+<p class="hero-sub">
+Track your consistency and study growth
+</p>
+
+</section>
+
+
+
+<!-- STATS -->
+<section class="container">
+
+<div class="grid">
+
+
+
+<div class="card fade-in">
+
+<h3>🔥 Current Streak</h3>
+
+<p class="big-number" id="streakDays">
+0 Days
+</p>
+
+</div>
+
+
+
+<div class="card fade-in">
+
+<h3>📚 Total Sessions</h3>
+
+<p class="big-number" id="studySessions">
+0
+</p>
+
+</div>
+
+
+
+<div class="card fade-in">
+
+<h3>⏱ Total Study Time</h3>
+
+<p class="big-number" id="studyHours">
+0 Min
+</p>
+
+</div>
+
+
+
+<div class="card fade-in">
+
+<h3>📆 last Activity</h3>
+
+<p class="big-number" id="lastStudy">
+No Data
+</p>
+
+</div>
+
+
+
+</div>
+
+</section>
+
+
+
+<!-- MOTIVATION -->
+<section class="container">
+
+<div class="card motivation-card">
+
+<h2>
+🚀 Keep Going
+</h2>
+
+<p id="motivationText">
+Consistency beats motivation.
+</p>
+
+<button class="btn-secondary"
+onclick="location.href='study.html'">
+ Start Stusy Session 
+</button>
+
+</div>
+
+</section>
+
+
+
+<script>
+
+// GET DATA
+let totalTime =
+    Number(localStorage.getItem("studyTime")) || 0;
+
+let sessions =
+    Number(localStorage.getItem("studySessions")) || 0;
+
+let streak =
+    Number(localStorage.getItem("studyStreak")) || 0;
+
+let lastDate =
+    localStorage.getItem("lastStudyDate") || "No Data";
+
+
+
+// UPDATE UI
+document.getElementById("studyHours").innerText =
+    totalTime + " Min";
+
+document.getElementById("studySessions").innerText =
+    sessions;
+
+document.getElementById("streakDays").innerText =
+    streak + " Days";
+
+document.getElementById("lastStudy").innerText =
+    lastDate;
+
+
+
+// MOTIVATION
+let text = "";
+
+if (streak <= 2) {
+
+    text =
+    "Start building your study consistency 🔥";
+
+}
+
+else if (streak <= 7) {
+
+    text =
+    "Great progress! Keep studying daily 🚀";
+
+}
+
+else {
+
+    text =
+    "Excellent discipline! You're becoming unstoppable 🧠";
+
+}
+
+document.getElementById("motivationText").innerText =
+    text;
+
+</script>
+
+</body>
+  </html>
+  
