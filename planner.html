@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Study Planner | StudyVerse AI</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+
+<div class="logo">
+
+<div class="logo-symbol">
+<span class="core"></span>
+<span class="ring ring1"></span>
+<span class="ring ring2"></span>
+</div>
+
+<span class="logo-text">StudyVerse AI</span>
+
+</div>
+
+<div>
+
+<a href="index.html">Home</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="notes.html">Notes</a>
+<a href="tool.html">Tools</a>
+<a href="planner.html">planner</a>
+
+</div>
+
+</nav>
+
+
+
+<!-- HERO -->
+<section class="hero">
+
+<h1 class="hero-title">
+🧠 AI Study Planner
+</h1>
+
+<p class="hero-sub">
+Paste your syllabus or topics and generate a smart study schedule
+</p>
+
+</section>
+
+
+
+<!-- PLANNER -->
+<section class="container">
+
+<div class="planner-box fade-in">
+
+<textarea
+id="syllabus"
+placeholder="Paste syllabus or study topics here..."></textarea>
+
+<input
+type="number"
+id="days"
+placeholder="Enter available study days">
+
+<button onclick="generatePlan()">
+Generate Smart Plan
+</button>
+
+<button onclick="savePlan()">
+Save Plan
+</button>
+
+<button onclick="clearPlans()">
+Clear plans 
+</button>
+
+<div id="plan"></div>
+
+</div>
+
+</section>
+
+
+
+<!-- SAVED PLANS -->
+<section class="container">
+
+<h2 class="section-title">
+📅 Saved Study Plans
+</h2>
+
+<div id="savedPlans" class="notes-grid"></div>
+
+</section>
+
+
+
+<script>
+
+// GENERATE PLAN
+function generatePlan() {
+
+    let syllabus =
+        document.getElementById("syllabus").value.trim();
+
+    let days =
+        parseInt(document.getElementById("days").value);
+
+    let planBox =
+        document.getElementById("plan");
+
+
+
+    if (!syllabus || !days) {
+
+        alert("Enter syllabus and days");
+
+        return;
+    }
+
+
+
+       let topics =
+     syllabus
+    .split(/\n|,/)
+    .map(t => t.trim())
+    .filter(Boolean);
+
+    let totalTopics = topics.length;
+
+    let perDay =
+        Math.ceil(totalTopics / days);
+
+    let output = "📚 SMART STUDY PLAN\n\n";
+
+
+
+    let current = 0;
+
+    for (let d = 1; d <= days; d++) {
+
+        output += `DAY ${d}\n`;
+
+        let count = 0;
+
+        while (
+            current < totalTopics &&
+            count < perDay
+        ) {
+
+            output +=
+            "• " +
+            topics[current].trim() +
+            "\n";
+
+            current++;
+            count++;
+        }
+
+        output += "\n";
+    }
+
+
+
+    output +=
+    "✅ Final Day → Revision + Mock Test";
+
+
+
+    planBox.innerText = output;
+}
+
+
+
+// SAVE PLAN
+function savePlan() {
+
+    let text =
+        document.getElementById("plan").innerText;
+
+    if (!text) {
+
+        alert("Generate a plan first");
+
+        return;
+    }
+
+
+
+    let plans =
+        JSON.parse(localStorage.getItem("studyPlans")) || [];
+
+
+
+    plans.push({
+
+        content: text,
+
+        date: new Date().toLocaleString()
+
+    });
+     if ( plans.length > 50) {
+         plans.shift();
+     }
+
+
+
+    localStorage.setItem(
+        "studyPlans",
+        JSON.stringify(plans)
+    );
+
+
+
+    alert("Plan saved ✅");
+
+    loadPlans();
+}
+
+
+// LOAD SAVED PLANS
+function loadPlans() {
+
+    let container =
+        document.getElementById("savedPlans");
+
+
+
+    let plans =
+        JSON.parse(localStorage.getItem("studyPlans")) || [];
+
+
+
+    if (plans.length === 0) {
+
+        container.innerHTML = `
+
+        <div class="empty-box">
+
+        <h3>No Saved Plans Yet 📭</h3>
+
+        </div>
+
+        `;
+
+        return;
+    }
+
+
+
+    container.innerHTML =
+    plans.map((plan, index) => `
+
+    <div class="note-card fade-in">
+
+        <div class="note-top">
+
+            <span class="note-type">
+            Study Plan
+            </span>
+
+            <span class="note-date">
+            ${plan.date}
+            </span>
+
+        </div>
+
+        <pre class="note-content">
+${plan.content}
+        </pre>
+
+        <div class="note-buttons">
+
+            <button onclick="deletePlan(${index})">
+            Delete
+            </button>
+
+            <button onclick="copyPlan(${index})">
+            Copy
+            </button>
+
+        </div>
+
+    </div>
+
+    `).join("");
+}
+
+function clearPlans() {
+
+    if (!confirm("Delete all saved plans?")) {
+        return;
+    }
+
+    localStorage.removeItem("studyPlans");
+
+    loadPlans();
+
+}
+
+// DELETE PLAN
+function deletePlan(index) {
+
+    let plans =
+        JSON.parse(localStorage.getItem("studyPlans")) || [];
+
+    plans.splice(index, 1);
+
+    localStorage.setItem(
+        "studyPlans",
+        JSON.stringify(plans)
+    );
+
+    loadPlans();
+}
+
+
+
+// COPY PLAN
+function copyPlan(index) {
+
+    let plans =
+        JSON.parse(localStorage.getItem("studyPlans")) || [];
+
+    navigator.clipboard.writeText(
+        plans[index].content
+    );
+
+    alert("Plan copied ✅");
+}
+
+
+
+// INITIAL LOAD
+loadPlans();
+
+</script>
+
+</body>
+</html>
