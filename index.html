@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>StudyVerse AI</title>
+
+<meta name="description"
+content="StudyVerse AI helps students generate notes, summaries, revisions, questions, study plans and more.">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+
+<div class="intro-center">
+
+<div class="logo-symbol big">
+
+<span class="core"></span>
+
+<span class="ring ring1"></span>
+
+<span class="ring ring2"></span>
+
+</div>
+
+<h1 class="intro-title">
+StudyVerse AI
+</h1>
+
+<p class="intro-sub">
+Smart Learning Powered by AI
+</p>
+
+</div>
+
+</div>
+
+<!-- NAVBAR -->
+<nav>
+
+<div class="logo">
+
+<div class="logo-symbol">
+
+<span class="core"></span>
+
+<span class="ring ring1"></span>
+
+<span class="ring ring2"></span>
+
+</div>
+
+<span class="logo-text">
+StudyVerse AI
+</span>
+
+</div>
+
+<div>
+
+<a href="dashboard.html">Dashboard</a>
+
+<a href="tool.html">Tools</a>
+
+<a href="study.html">Timer</a>
+
+<a href="planner.html">Planner</a>
+
+<a href="streak.html">Streak</a>
+
+<a href="about.html">About</a>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+<h1 class="hero-title">
+Study Smarter with AI 🚀
+</h1>
+
+<p class="hero-sub">
+Generate Notes • Summary • Revision • Questions
+</p>
+
+<div class="ai-box fade-in">
+
+<select id="level">
+
+<option>Course</option>
+
+<option>School</option>
+
+<option>College</option>
+
+<option>CA</option>
+
+<option>UPSC</option>
+
+<option>MBBS</option>
+
+<option>Law</option>
+
+<option>Other</option>
+
+</select>
+
+<input
+type="text"
+id="topic"
+placeholder="Enter topic (Example: Elasticity, Diabetes, Cardiac Cycle)"
+
+
+<select id="type">
+
+<option>Notes</option>
+
+<option>Summary</option>
+
+<option>Revision</option>
+
+<option>Questions</option>
+
+</select>
+
+<div class="hero-btns">
+
+<button onclick="generateSmart()">
+Generate
+</button>
+
+<button class="btn-secondary"
+onclick="downloadPDF()">
+Download
+</button>
+
+</div>
+
+<h3 id="resultTitle"></h3>
+<div id="result"></div>
+
+</div>
+
+</section>
+
+<!-- FEATURES -->
+<section class="container">
+
+<h2 class="section-title">
+Why Students Love StudyVerse AI
+</h2>
+
+<div class="grid">
+
+<div class="card fade-in">
+
+<h3>📘 Smart Notes</h3>
+
+<p>
+Generate instant study notes for any subject.
+</p>
+
+</div>
+
+<div class="card fade-in">
+
+<h3>⚡ Quick Revision</h3>
+
+<p>
+Create fast revision sheets before exams.
+</p>
+
+</div>
+
+<div class="card fade-in">
+
+<h3>⏱ Focus Timer</h3>
+
+<p>
+Stay productive with Pomodoro study sessions.
+</p>
+
+</div>
+
+<div class="card fade-in">
+
+<h3>🧠 AI Planner</h3>
+
+<p>
+Convert syllabus into study schedule automatically.
+</p>
+
+</div>
+
+<div class="card fade-in">
+
+<h3>🔥 Streak Tracking</h3>
+
+<p>
+Track consistency and study habits daily.
+</p>
+
+</div>
+
+<div class="card fade-in">
+
+<h3>📊 Dashboard</h3>
+
+<p>
+Monitor study progress and saved notes.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+<section class="hero">
+
+<h2 class="gradient-text">
+Your AI Study Partner
+</h2>
+
+<p class="hero-sub">
+Built for students preparing seriously.
+</p>
+
+<div class="hero-btns">
+
+<button onclick="location.href='tools.html'">
+Explore Tools
+</button>
+
+<button class="btn-secondary"
+onclick="location.href='dashboard.html'">
+Open Dashboard
+</button>
+
+<button class="btn-secondary"
+onclick="location.href='notes.html'">
+ Generated Notes
+</button>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+© 2026 StudyVerse AI | Smart  learning Powered by AI 
+
+
+</footer>
+ <script src="database.js"></script>
+<script src="script.js"></script>
+
+</body>
+  </html>
