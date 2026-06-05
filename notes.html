@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Saved Notes | StudyVerse AI</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+
+<h1 class="hero-title">📘 Saved Study Notes</h1>
+
+<p class="hero-sub">
+Revise your generated notes anytime
+</p>
+
+</section>
+
+
+<!-- NOTES CONTAINER -->
+<section class="container">
+
+<div id="notesContainer" class="notes-grid"></div>
+
+</section>
+
+
+
+<script>
+
+// LOAD NOTES
+function loadNotes() {
+
+    const container =
+        document.getElementById("notesContainer");
+
+    let notes =
+        JSON.parse(localStorage.getItem("studyNotes")) || [];
+
+
+    // EMPTY NOTES
+    if (notes.length === 0) {
+
+        container.innerHTML = `
+
+        <div class="empty-box">
+
+        <h2>No Notes Saved Yet 📭</h2>
+
+        <p>
+        Generate notes from homepage and they will appear here.
+        </p>
+
+        </div>
+
+        `;
+
+        return;
+    }
+
+
+    // DISPLAY NOTES
+    container.innerHTML = notes.map((note, index) => `
+
+    <div class="note-card fade-in">
+
+        <div class="note-top">
+
+            <span class="note-type">
+            ${note.type}
+            </span>
+
+            <span class="note-date">
+            ${note.date}
+            </span>
+
+        </div>
+
+        <h2 class="note-topic">
+        ${note.topic}
+        </h2>
+
+        <pre class="note-content">
+${note.content}
+        </pre>
+
+        <div class="note-buttons">
+
+            <button onclick="deleteNote(${index})">
+            Delete
+            </button>
+
+            <button onclick="copyNote(${index})">
+            Copy
+            </button>
+
+        </div>
+
+    </div>
+
+    `).join("");
+
+}
+
+
+
+// DELETE NOTE
+function deleteNote(index) {
+
+    let notes =
+        JSON.parse(localStorage.getItem("studyNotes")) || [];
+
+    notes.splice(index, 1);
+
+    localStorage.setItem(
+        "studyNotes",
+        JSON.stringify(notes)
+    );
+
+    loadNotes();
+}
+
+
+
+// COPY NOTE
+function copyNote(index) {
+
+    let notes =
+        JSON.parse(localStorage.getItem("studyNotes")) || [];
+
+    navigator.clipboard.writeText(notes[index].content);
+
+    alert("Note copied ✅");
+
+}
+
+
+
+// INITIAL LOAD
+loadNotes();
+
+</script>
+
+</body>
+</html>
