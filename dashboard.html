@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - StudyVerse AI</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+
+<div class="logo-symbol">
+<span class="core"></span>
+<span class="ring ring1"></span>
+<span class="ring ring2"></span>
+</div>
+
+StudyVerse AI
+
+</div>
+
+<div>
+<a href="index.html">Home</a>
+<a href="tool.html">Tools</a>
+<a href="study.html">Timer</a>
+<a href="planner.html">Planner</a>
+</div>
+
+</nav>
+
+<section class="hero">
+<h1 class="hero-title">Student Dashboard</h1>
+<p class="hero-sub">
+Track your productivity and study consistency.
+</p>
+</section>
+
+<section class="container">
+
+<div class="grid">
+
+<div class="card">
+<h3>⏱ Total Study Time</h3>
+<p id="studyTime">0 min</p>
+</div>
+
+<div class="card">
+<h3>🔥 Current Streak</h3>
+<p  id= "streakCount">0 Days</p>
+</div>
+
+<div class="card">
+<h3>📘 Saved Notes</h3>
+<p id="savedNotes">0 Notes</p>
+</div>
+
+<div class="card">
+<h3>🎯 Productivity</h3>
+<p id="productivity">Calculating</p>
+</div>
+ <div class="card">
+
+<h3>📘 Saved Notes Library</h3>
+
+<p>
+Open all your saved study notes.
+</p>
+
+<button onclick="location.href='notes.html'">
+Open Notes
+</button>
+
+</div>
+<div class="card">
+
+<h3>📅 Study Planner</h3>
+
+<p>
+Create and manage study schedules.
+</p>
+
+<button onclick="location.href='planner.html'">
+Open Planner
+</button>
+
+</div> 
+ 
+</div>
+
+</section>
+
+<footer>
+© 2026 StudyVerse AI | Smart  learning Powered by AI 
+
+</footer>
+
+<script>
+
+let time = localStorage.getItem("studyTime") || 0;
+document.getElementById("studyTime").innerText = time + " min";
+
+let notes = JSON.parse(localStorage.getItem("studyNotes")) || [];
+document.getElementById("savedNotes").innerText =
+notes.length + " Notes";
+
+let streak =
+localStorage.getItem("studyStreak") || 0;
+
+document.getElementById("streakCount").innerText =
+streak + " Days";
+ 
+ let productivity = "Beginner";
+
+if (streak >= 7) {
+    productivity = "Consistent";
+}
+
+if (streak >= 30) {
+    productivity = "Excellent";
+}
+
+document.getElementById("productivity").innerText =
+productivity;
+
+</script>
+
+</body>
+</html>
