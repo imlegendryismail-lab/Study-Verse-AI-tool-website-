@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - StudyVerse AI</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+
+<div class="logo-symbol">
+<span class="core"></span>
+<span class="ring ring1"></span>
+<span class="ring ring2"></span>
+</div>
+
+StudyVerse AI
+
+</div>
+
+<div>
+<a href="index.html">Home</a>
+<a href="tool.html">Tools</a>
+<a href="about.html">About</a>
+<a href="dashboard.html">Dashboard</a>
+</div>
+
+</nav>
+
+<section class="hero">
+<h1 class="hero-title">Contact Us</h1>
+<p class="hero-sub">
+We’d love to hear your feedback and ideas.
+</p>
+</section>
+
+<section class="container">
+
+<form class="contact-box" onsubmit="submitForm(event)">
+
+<h2 class="gradient-text">Get in Touch</h2>
+
+<input type="text" placeholder="Your Name" required>
+
+<input type="email" placeholder="Your Email" required>
+
+<textarea rows="5" placeholder="Write your message..." required></textarea>
+
+<button type="submit">Send Message</button>
+
+<p id="msg"></p>
+
+</form>
+</section>
+<section>
+<div class = "about- card">
+  <h2>  Feedback Matters </h2>
+ <p>
+   StudyVerse AI is continuously improving. Your suggestion help us build better tools for students 
+ </p>
+</div>
+
+</section>
+
+<footer>
+© 2026 StudyVerse AI |Smart Learning Platform 
+</footer>
+
+<script>
+function submitForm(e){
+e.preventDefault();
+
+const msg = document.getElementById("msg");
+
+msg.innerHTML = " 📩 contact  form demo mode. Message submission will be available soon!";
+msg.style.marginTop = "15px";
+msg.style.color = "#22d3ee";
+}
+</script>
+
+</body>
+  </html>
+
