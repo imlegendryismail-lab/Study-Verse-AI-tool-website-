@@ -549,6 +549,18 @@ document.getElementById("feedback").textContent =
 document.getElementById("feedback").textContent =
 "❌ Not quite. " + questionData.explanation;
 
+wrongAnswers.push({
+
+question: questionData.question,
+
+selectedAnswer: questionData.options[selectedIndex],
+
+correctAnswer: questionData.options[questionData.answer],
+
+explanation: questionData.explanation
+
+});
+
 }
 
 
