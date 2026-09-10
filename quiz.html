@@ -430,6 +430,12 @@ function startQuiz() {
 
 const topic = document.getElementById("topic").value;
 
+currentSubject = document.getElementById("subject").value;
+
+currentTopic = topic;
+
+wrongAnswers = [];
+
 questions = quizQuestions[topic];
 
 if (!questions || questions.length === 0) {
