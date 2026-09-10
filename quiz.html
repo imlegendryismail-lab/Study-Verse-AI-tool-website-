@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Quiz & Test Engine - StudyVerse AI</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">
+
+<div class="logo-symbol">
+<span class="core"></span>
+<span class="ring ring1"></span>
+<span class="ring ring2"></span>
+</div>
+
+<span class="logo-text">StudyVerse AI</span>
+
+</div>
+
+<div>
+<a href="index.html">Home</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="study.html">Timer</a>
+<a href="planner.html">Planner</a>
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h1 class="hero-title">
+🧠 Quiz & Test Engine
+</h1>
+
+<p class="hero-sub">
+Test your knowledge and discover what you need to improve.
+</p>
+
+</section>
+
+
+<!-- QUIZ SETUP -->
+
+<section class="container">
+
+<div class="card">
+
+<h2>Start Your Quiz</h2>
+
+<p>Select a subject and topic to begin.</p>
+
+
+<label for="subject">
+<strong>Subject</strong>
+</label>
+
+<select id="subject">
+
+<option value="economics">
+Business Economics
+</option>
+
+<option value="accounts">
+Accounting
+</option>
+
+<option value="law">
+Business Law
+</option>
+
+<option value="qa">
+Quantitative Aptitude
+</option>
+
+</select>
+
+
+<label for="topic">
+<strong>Topic</strong>
+</label>
+
+<select id="topic">
+
+<option value="demand">
+Demand & Supply
+</option>
+
+<option value="accounting">
+Accounting Basics
+</option>
+
+<option value="contract">
+Contract Law
+</option>
+
+<option value="math">
+Mathematics Basics
+</option>
+
+</select>
+
+
+<button onclick="startQuiz()">
+🚀 Start Quiz
+</button>
+
+</div>
+
+</section>
+
+
+<!-- QUIZ AREA -->
+
+<section class="container" id="quizArea" style="display:none;">
+
+<div class="card">
+
+<div id="quizProgress"></div>
+
+<h2 id="question"></h2>
+
+<div id="options"></div>
+
+<p id="feedback"></p>
+
+<button id="nextButton" onclick="nextQuestion()" style="display:none;">
+Next Question →
+</button>
+
+</div>
+
+</section>
+
+
+<!-- RESULT AREA -->
+
+<section class="container" id="resultArea" style="display:none;">
+
+<div class="card">
+
+<h2>🎉 Quiz Complete!</h2>
+
+<h3 id="score"></h3>
+
+<p id="accuracy"></p>
+
+<div id="resultMessage"></div>
+
+<button onclick="location.reload()">
+🔄 Try Again
+</button>
+
+<button onclick="location.href='tool.html'">
+← Back to Tools
+</button>
+
+</div>
+
+</section>
+
+
+<footer>
+
+© 2026 StudyVerse AI | Smart Learning Powered by AI
+
+</footer>
+
+
+<script>
+
+
+// =====================================
+// QUIZ DATABASE
+// =====================================
+
+const quizQuestions = {
+
+demand: [
+
+{
+question: "According to the law of demand, assuming other factors remain constant, what generally happens when the price of a good increases?",
+
+options: [
+"Quantity demanded decreases",
+"Quantity demanded increases",
+"Demand always increases",
+"Demand remains unchanged"
+],
+
+answer: 0,
+
+explanation:
+"Under the law of demand, quantity demanded generally falls when price rises, ceteris paribus."
+},
+
+{
+question: "Which change would cause a movement along the same demand curve?",
+
+options: [
+"A change in consumer income",
+"A change in the price of the good itself",
+"A change in consumer preferences",
+"A change in the price of a substitute"
+],
+
+answer: 1,
+
+explanation:
+"A change in the good's own price causes movement along the existing demand curve."
+},
+
+{
+question: "If the price of tea rises and consumers start buying more coffee, tea and coffee are most likely:",
+
+options: [
+"Complementary goods",
+"Substitute goods",
+"Inferior goods",
+"Public goods"
+],
+
+answer: 1,
+
+explanation:
+"Tea and coffee can act as substitutes because consumers may switch from one to the other."
+}
+
+],
+
+
+accounting: [
+
+{
+question: "Which account is generally prepared to ascertain the gross profit or gross loss of a business?",
+
+options: [
+"Trading Account",
+"Capital Account",
+"Cash Account",
+"Suspense Account"
+],
+
+answer: 0,
+
+explanation:
+"The Trading Account is prepared to determine gross profit or gross loss."
+},
+
+{
+question: "An asset account normally has which balance?",
+
+options: [
+"Debit balance",
+"Credit balance",
+"Nil balance only",
+"Either balance in every case"
+],
+
+answer: 0,
+
+explanation:
+"Assets normally have debit balances because increases in assets are recorded on the debit side."
+},
+
+{
+question: "Which of the following is a personal account?",
+
+options: [
+"Machinery Account",
+"Purchases Account",
+"Ramesh Account",
+"Rent Account"
+],
+
+answer: 2,
+
+explanation:
+"An account relating to a person, such as Ramesh Account, is a personal account."
+}
+
+],
+
+
+contract: [
+
+{
+question: "Under the Indian Contract Act, 1872, an agreement enforceable by law is called:",
+
+options: [
+"A contract",
+"A proposal",
+"A promise only",
+"An invitation to offer"
+],
+
+answer: 0,
+
+explanation:
+"A contract is an agreement enforceable by law."
+},
+
+{
+question: "Which of the following is essential for a valid contract?",
+
+options: [
+"Free consent",
+"Unlawful object",
+"Absence of consideration in every case",
+"Minority of both parties"
+],
+
+answer: 0,
+
+explanation:
+"Free consent is one of the essential requirements for a valid contract."
+},
+
+{
+question: "A person who has attained the age of majority and is of sound mind is generally:",
+
+options: [
+"Competent to contract",
+"Always incapable of contracting",
+"Competent only as a minor",
+"Never allowed to enter contracts"
+],
+
+answer: 0,
+
+explanation:
+"Competency generally requires majority, sound mind, and absence of legal disqualification."
+}
+
+],
+
+
+math: [
+
+{
+question: "Which of the following is a prime number?",
+
+options: [
+"21",
+"29",
+"35",
+"39"
+],
+
+answer: 1,
+
+explanation:
+"29 has exactly two positive divisors: 1 and 29."
+},
+
+{
+question: "If a number is divisible by 2, its last digit must be:",
+
+options: [
+"Odd",
+"Even",
+"Prime",
+"Zero only"
+],
+
+answer: 1,
+
+explanation:
+"A whole number is divisible by 2 when its last digit is even."
+},
+
+{
+question: "Which mathematical operation is represented by the symbol ×?",
+
+options: [
+"Addition",
+"Subtraction",
+"Multiplication",
+"Division"
+],
+
+answer: 2,
+
+explanation:
+"The symbol × represents multiplication."
+}
+
+]
+
+};
+
+
+// =====================================
+// QUIZ VARIABLES
+// =====================================
+
+let questions = [];
+
+let currentQuestion = 0;
+
+let score = 0;
+
+let answered = false;
+
+
+// =====================================
+// START QUIZ
+// =====================================
+
+function startQuiz() {
+
+const topic = document.getElementById("topic").value;
+
+questions = quizQuestions[topic];
+
+if (!questions || questions.length === 0) {
+
+alert("No questions available for this topic yet.");
+
+return;
+
+}
+
+currentQuestion = 0;
+
+score = 0;
+
+answered = false;
+
+document.getElementById("quizArea").style.display = "block";
+
+document.getElementById("resultArea").style.display = "none";
+
+document.getElementById("quizArea").scrollIntoView({
+behavior: "smooth"
+});
+
+showQuestion();
+
+}
+
+
+// =====================================
+// SHOW QUESTION
+// =====================================
+
+function showQuestion() {
+
+const questionData = questions[currentQuestion];
+
+document.getElementById("quizProgress").textContent =
+"Question " + (currentQuestion + 1) +
+" of " + questions.length;
+
+
+document.getElementById("question").textContent =
+questionData.question;
+
+
+const optionsContainer =
+document.getElementById("options");
+
+optionsContainer.innerHTML = "";
+
+document.getElementById("feedback").textContent = "";
+
+document.getElementById("nextButton").style.display = "none";
+
+answered = false;
+
+
+questionData.options.forEach((option, index) => {
+
+const button = document.createElement("button");
+
+button.textContent = option;
+
+button.style.display = "block";
+
+button.style.width = "100%";
+
+button.style.margin = "10px 0";
+
+button.onclick = function() {
+
+selectAnswer(index);
+
+};
+
+optionsContainer.appendChild(button);
+
+});
+
+}
+
+
+// =====================================
+// SELECT ANSWER
+// =====================================
+
+function selectAnswer(selectedIndex) {
+
+if (answered) {
+return;
+}
+
+answered = true;
+
+const questionData = questions[currentQuestion];
+
+const buttons =
+document.getElementById("options").children;
+
+
+if (selectedIndex === questionData.answer) {
+
+score++;
+
+document.getElementById("feedback").textContent =
+"✅ Correct! " + questionData.explanation;
+
+} else {
+
+document.getElementById("feedback").textContent =
+"❌ Not quite. " + questionData.explanation;
+
+}
+
+
+for (let i = 0; i < buttons.length; i++) {
+
+buttons[i].disabled = true;
+
+}
+
+
+document.getElementById("nextButton").style.display =
+"block";
+
+}
+
+
+// =====================================
+// NEXT QUESTION
+// =====================================
+
+function nextQuestion() {
+
+currentQuestion++;
+
+if (currentQuestion < questions.length) {
+
+showQuestion();
+
+} else {
+
+showResult();
+
+}
+
+}
+
+
+// =====================================
+// SHOW RESULT
+// =====================================
+
+function showResult() {
+
+document.getElementById("quizArea").style.display =
+"none";
+
+document.getElementById("resultArea").style.display =
+"block";
+
+
+const percentage =
+Math.round((score / questions.length) * 100);
+
+
+document.getElementById("score").textContent =
+"Score: " + score + " / " + questions.length;
+
+
+document.getElementById("accuracy").textContent =
+"Accuracy: " + percentage + "%";
+
+
+let message = "";
+
+
+if (percentage >= 80) {
+
+message =
+"🟢 Excellent! You have a strong understanding of this topic.";
+
+}
+else if (percentage >= 60) {
+
+message =
+"🟡 Good progress! A little more revision can strengthen this topic.";
+
+}
+else {
+
+message =
+"🔴 This topic needs more revision. Keep practicing — you can improve.";
+
+}
+
+
+document.getElementById("resultMessage").textContent =
+message;
+
+
+document.getElementById("resultArea").scrollIntoView({
+behavior: "smooth"
+});
+
+}
+
+</script>
+
+</body>
+
+</html>
