@@ -649,10 +649,59 @@ message =
 document.getElementById("resultMessage").textContent =
 message;
 
+ saveQuizResult();
 
 document.getElementById("resultArea").scrollIntoView({
 behavior: "smooth"
 });
+
+}
+
+// =====================================
+// SAVE QUIZ RESULT
+// =====================================
+
+function saveQuizResult() {
+
+const results =
+JSON.parse(localStorage.getItem("quizResults")) || [];
+
+const percentage =
+Math.round((score / questions.length) * 100);
+
+const attempts =
+results.filter(function(result) {
+
+return result.topic === currentTopic;
+
+}).length + 1;
+
+const quizResult = {
+
+subject: currentSubject,
+
+topic: currentTopic,
+
+score: score,
+
+total: questions.length,
+
+accuracy: percentage,
+
+wrongAnswers: wrongAnswers,
+
+attempt: attempts,
+
+date: new Date().toISOString()
+
+};
+
+results.push(quizResult);
+
+localStorage.setItem(
+"quizResults",
+JSON.stringify(results)
+);
 
 }
 
