@@ -731,6 +731,82 @@ JSON.stringify(results)
 
 }
 
+// =====================================
+// LOAD QUIZ HISTORY
+// =====================================
+
+function loadQuizHistory() {
+
+const history =
+document.getElementById("quizHistory");
+
+const results =
+JSON.parse(localStorage.getItem("quizResults")) || [];
+
+if (results.length === 0) {
+
+history.textContent = "No quiz attempts yet.";
+
+return;
+
+}
+
+history.innerHTML = "";
+
+results.slice().reverse().forEach(function(result) {
+
+const item = document.createElement("div");
+
+item.style.margin = "15px 0";
+
+item.style.padding = "12px";
+
+item.style.borderRadius = "10px";
+
+item.style.background =
+"rgba(255,255,255,0.05)";
+
+item.textContent =
+result.subject +
+" • " +
+result.topic +
+" • Score: " +
+result.score +
+"/" +
+result.total +
+" • Accuracy: " +
+result.accuracy +
+"% • Attempt " +
+result.attempt;
+
+history.appendChild(item);
+
+});
+
+}
+
+
+// =====================================
+// CLEAR QUIZ HISTORY
+// =====================================
+
+function clearQuizHistory() {
+
+if (confirm("Clear all quiz history?")) {
+
+localStorage.removeItem("quizResults");
+
+loadQuizHistory();
+
+}
+
+}
+
+
+// Load history when page opens
+
+loadQuizHistory();
+
 </script>
 
 </body>
