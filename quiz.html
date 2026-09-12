@@ -592,75 +592,76 @@ optionsContainer.appendChild(button);
 
 }
 
-
 // =====================================
 // SELECT ANSWER
 // =====================================
 
 function selectAnswer(selectedIndex) {
 
-if (answered) {
+    if (answered) {
+        return;
+    }
 
-return;
+    answered = true;
+
+    const questionData = questions[currentQuestion];
+
+    const buttons =
+        document.getElementById("options").children;
+
+    const selectedOption =
+        questionData.shuffledOptions[selectedIndex];
+
+    const correctOption =
+        questionData.shuffledOptions.find(function(option) {
+            return option.originalIndex === questionData.answer;
+        });
+
+    if (selectedOption.originalIndex === questionData.answer) {
+
+        score++;
+
+        document.getElementById("feedback").textContent =
+            "✅ Correct! " +
+            questionData.explanation;
+
+    }
+
+    else {
+
+        document.getElementById("feedback").textContent =
+            "❌ Not quite. " +
+            questionData.explanation;
+
+        wrongAnswers.push({
+
+            question:
+                questionData.question,
+
+            selectedAnswer:
+                selectedOption.text,
+
+            correctAnswer:
+                correctOption.text,
+
+            explanation:
+                questionData.explanation
+
+        });
+
+    }
+
+    for (let i = 0; i < buttons.length; i++) {
+
+        buttons[i].disabled = true;
+
+    }
+
+    document.getElementById("nextButton").style.display =
+        "block";
 
 }
 
-answered = true;
-
-const questionData =
-questions[currentQuestion];
-
-const buttons =
-document.getElementById("options").children;
-
-
-if (selectedIndex === questionData.answer) {
-
-score++;
-
-document.getElementById("feedback").textContent =
-"✅ Correct! " +
-questionData.explanation;
-
-}
-
-else {
-
-document.getElementById("feedback").textContent =
-"❌ Not quite. " +
-questionData.explanation;
-
-
-wrongAnswers.push({
-
-question:
-questionData.question,
-
-selectedAnswer:
-questionData.options[selectedIndex],
-
-correctAnswer:
-questionData.options[questionData.answer],
-
-explanation:
-questionData.explanation
-
-});
-
-}
-
-
-for (let i = 0; i < buttons.length; i++) {
-
-buttons[i].disabled = true;
-
-}
-
-
-document.getElementById("nextButton").style.display =
-"block";
-
-}
 
 
 // =====================================
