@@ -539,56 +539,99 @@ showQuestion();
 
 function showQuestion() {
 
-const questionData =
-questions[currentQuestion];
+    const questionData =
+        questions[currentQuestion];
 
-document.getElementById("quizProgress").textContent =
-"Question " +
-(currentQuestion + 1) +
-" of " +
-questions.length;
+    document.getElementById("quizProgress").textContent =
+        "Question " +
+        (currentQuestion + 1) +
+        " of " +
+        questions.length;
 
+    document.getElementById("question").textContent =
+        questionData.question;
 
-document.getElementById("question").textContent =
-questionData.question;
+    const optionsContainer =
+        document.getElementById("options");
 
+    optionsContainer.innerHTML = "";
 
-const optionsContainer =
-document.getElementById("options");
+    document.getElementById("feedback").textContent =
+        "";
 
-optionsContainer.innerHTML = "";
+    document.getElementById("nextButton").style.display =
+        "none";
 
-document.getElementById("feedback").textContent =
-"";
-
-document.getElementById("nextButton").style.display =
-"none";
-
-answered = false;
+    answered = false;
 
 
-questionData.options.forEach((option, index) => {
+    // =====================================
+    // SHUFFLE ANSWER OPTIONS
+    // =====================================
 
-const button =
-document.createElement("button");
+    questionData.shuffledOptions =
+        questionData.options.map(function(option, index) {
 
-button.textContent = option;
+            return {
+                text: option,
+                originalIndex: index
+            };
 
-button.style.display = "block";
+        });
 
-button.style.width = "100%";
 
-button.style.margin = "10px 0";
+    for (
+        let i = questionData.shuffledOptions.length - 1;
+        i > 0;
+        i--
+    ) {
 
-button.onclick = function() {
+        const randomIndex =
+            Math.floor(Math.random() * (i + 1));
 
-selectAnswer(index);
+        [
+            questionData.shuffledOptions[i],
+            questionData.shuffledOptions[randomIndex]
+        ] = [
+            questionData.shuffledOptions[randomIndex],
+            questionData.shuffledOptions[i]
+        ];
 
-};
+    }
 
-optionsContainer.appendChild(button);
 
-});
+    // =====================================
+    // DISPLAY OPTIONS
+    // =====================================
+
+    questionData.shuffledOptions.forEach(
+        function(option, index) {
+
+            const button =
+                document.createElement("button");
+
+            button.textContent =
+                option.text;
+
+            button.style.display =
+                "block";
+
+            button.style.width =
+                "100%";
+
+            button.style.margin =
+                "10px 0";
+
+            button.onclick = function() {
+
+                selectAnswer(index);
+
+            };
+
+            optionsContainer.appendChild(button);
+
+        }
+    );
 
 }
 
