@@ -524,59 +524,122 @@ return shuffled;
 
 }
 
-
 // =====================================
 // START QUIZ
 // =====================================
 
 function startQuiz() {
 
-const topic =
-document.getElementById("topic").value;
+    const topic =
+        document.getElementById("topic").value;
 
-currentSubject =
-document.getElementById("subject").value;
+    const difficulty =
+        document.getElementById("difficulty").value;
 
-currentTopic = topic;
+    currentSubject =
+        document.getElementById("subject").value;
 
-wrongAnswers = [];
+    currentTopic = topic;
 
-questions = quizQuestions[topic];
+    wrongAnswers = [];
 
-if (!questions || questions.length === 0) {
 
-alert("No questions available for this topic yet.");
+    // =====================================
+    // GET QUESTIONS FOR SELECTED TOPIC
+    // =====================================
 
-return;
+    const topicQuestions =
+        quizQuestions[topic];
+
+    if (!topicQuestions || topicQuestions.length === 0) {
+
+        alert("No questions available for this topic yet.");
+
+        return;
+
+    }
+
+
+    // =====================================
+    // FILTER BY DIFFICULTY
+    // =====================================
+
+    if (difficulty === "mixed") {
+
+        questions =
+            [...topicQuestions];
+
+    }
+
+    else {
+
+        questions =
+            topicQuestions.filter(function(question) {
+
+                return question.difficulty === difficulty;
+
+            });
+
+    }
+
+
+    // =====================================
+    // CHECK AVAILABLE QUESTIONS
+    // =====================================
+
+    if (questions.length === 0) {
+
+        alert(
+            "No " +
+            difficulty +
+            " questions are available for this topic yet."
+        );
+
+        return;
+
+    }
+
+
+    // =====================================
+    // STEP 6A:
+    // RANDOMIZE QUESTION ORDER
+    // =====================================
+
+    questions =
+        shuffleQuestions(questions);
+
+
+    // =====================================
+    // RESET QUIZ
+    // =====================================
+
+    currentQuestion = 0;
+
+    score = 0;
+
+    answered = false;
+
+
+    // =====================================
+    // SHOW QUIZ
+    // =====================================
+
+    document.getElementById("quizArea").style.display =
+        "block";
+
+    document.getElementById("resultArea").style.display =
+        "none";
+
+
+    document.getElementById("quizArea").scrollIntoView({
+        behavior: "smooth"
+    });
+
+
+    showQuestion();
 
 }
 
-
-// STEP 6A:
-// Randomize the question order
-
-questions = shuffleQuestions(questions);
-
-
-currentQuestion = 0;
-
-score = 0;
-
-answered = false;
-
-document.getElementById("quizArea").style.display =
-"block";
-
-document.getElementById("resultArea").style.display =
-"none";
-
-document.getElementById("quizArea").scrollIntoView({
-behavior: "smooth"
-});
-
-showQuestion();
-
-}
 
 // =====================================
 // SHOW QUESTION
