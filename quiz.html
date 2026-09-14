@@ -1,245 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Quiz & Test Engine - StudyVerse AI</title>
-
-<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<!-- NAVBAR -->
-
-<nav>
-
-<div class="logo">
-
-<div class="logo-symbol">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Quiz & Test Engine - StudyVerse AI</title><link rel="stylesheet" href="style.css">
+</head><body><!-- NAVBAR --><nav><div class="logo"><div class="logo-symbol">
 <span class="core"></span>
 <span class="ring ring1"></span>
 <span class="ring ring2"></span>
-</div>
+</div><span class="logo-text">StudyVerse AI</span>
 
-<span class="logo-text">StudyVerse AI</span>
-
-</div>
-
-<div>
+</div><div>
 <a href="index.html">Home</a>
 <a href="dashboard.html">Dashboard</a>
 <a href="study.html">Timer</a>
 <a href="planner.html">Planner</a>
-</div>
-
-</nav>
-
-
-<!-- HERO -->
-
-<section class="hero">
-
-<h1 class="hero-title">
+</div></nav><!-- HERO --><section class="hero"><h1 class="hero-title">
 🧠 Quiz & Test Engine
-</h1>
-
-<p class="hero-sub">
+</h1><p class="hero-sub">
 Test your knowledge and discover what you need to improve.
-</p>
-
-</section>
-
-
-<!-- QUIZ SETUP -->
-
-<section class="container">
-
-<div class="card">
-
-<h2>Start Your Quiz</h2>
-
-<p>Select a subject and topic to begin.</p>
-
-<label for="subject">
+</p></section><!-- QUIZ SETUP --><section class="container"><div class="card"><h2>Start Your Quiz</h2><p>Select a subject and topic to begin.</p><label for="subject">
 <strong>Subject</strong>
-</label>
-
-<select id="subject">
-
-<option value="economics">
+</label><select id="subject"><option value="economics">
 Business Economics
-</option>
-
-<option value="accounts">
+</option><option value="accounts">
 Accounting
-</option>
-
-<option value="law">
+</option><option value="law">
 Business Law
-</option>
-
-<option value="qa">
+</option><option value="qa">
 Quantitative Aptitude
-</option>
-
-</select>
-
-
-<label for="topic">
+</option></select><label for="topic">
 <strong>Topic</strong>
-</label>
-
-<select id="topic">
-
-<option value="demand">
+</label><select id="topic"><option value="demand">
 Demand & Supply
-</option>
-
-<option value="accounting">
+</option><option value="accounting">
 Accounting Basics
-</option>
-
-<option value="contract">
+</option><option value="contract">
 Contract Law
-</option>
-
-<option value="math">
+</option><option value="math">
 Mathematics Basics
-</option>
-
-</select>
-
-<label for="difficulty">
+</option></select><label for="difficulty">
 <strong>Difficulty</strong>
-</label>
-
-<select id="difficulty">
-
-<option value="mixed">
+</label><select id="difficulty"><option value="mixed">
 🎲 Mixed
-</option>
-
-<option value="easy">
+</option><option value="easy">
 🟢 Easy
-</option>
-
-<option value="medium">
+</option><option value="medium">
 🟡 Medium
-</option>
-
-<option value="hard">
+</option><option value="hard">
 🔴 Hard
-</option>
-
-</select>
-
-<button onclick="startQuiz()">
+</option></select><button onclick="startQuiz()">
 🚀 Start Quiz
-</button>
-
-</div>
-
-</section>
-
-
-<!-- QUIZ AREA -->
-
-<section class="container" id="quizArea" style="display:none;">
-
-<div class="card">
-
-<div id="quizProgress"></div>
-
-<h2 id="question"></h2>
-
-<div id="options"></div>
-
-<p id="feedback"></p>
-
-<button id="nextButton" onclick="nextQuestion()" style="display:none;">
+</button></div></section><!-- QUIZ AREA --><section class="container" id="quizArea" style="display:none;"><div class="card"><div id="quizProgress"></div><h2 id="question"></h2><div id="options"></div><p id="feedback"></p><button id="nextButton" onclick="nextQuestion()" style="display:none;">
 Next Question →
-</button>
-
-</div>
-
-</section>
-
-
-<!-- RESULT AREA -->
-
-<section class="container" id="resultArea" style="display:none;">
-
-<div class="card">
-
-<h2>🎉 Quiz Complete!</h2>
-
-<h3 id="score"></h3>
-
-<p id="accuracy"></p>
-
-<div id="resultMessage"></div>
-
-<button onclick="location.reload()">
+</button></div></section><!-- RESULT AREA --><section class="container" id="resultArea" style="display:none;"><div class="card"><h2>🎉 Quiz Complete!</h2><h3 id="score"></h3><p id="accuracy"></p><div id="resultMessage"></div><button onclick="location.reload()">
 🔄 Try Again
-</button>
-
-<button onclick="location.href='tool.html'">
+</button><button onclick="location.href='tool.html'">
 ← Back to Tools
-</button>
-
-</div>
-
-</section>
-
-
-<!-- QUIZ HISTORY -->
-
-<section class="container">
-
-<div class="card">
-
-<h2>📊 Quiz History</h2>
-
-<p>Your previous quiz attempts will appear here.</p>
-
-<div id="quizHistory">
+</button></div></section><!-- QUIZ HISTORY --><section class="container"><div class="card"><h2>📊 Quiz History</h2><p>Your previous quiz attempts will appear here.</p><div id="quizHistory">
 No quiz attempts yet.
-</div>
-
-<button onclick="loadQuizHistory()">
+</div><button onclick="loadQuizHistory()">
 🔄 Refresh History
-</button>
-
-<button onclick="clearQuizHistory()">
+</button><button onclick="clearQuizHistory()">
 🗑️ Clear History
-</button>
+</button></div></section><footer>© 2026 StudyVerse AI | Smart Learning Powered by AI
 
-</div>
-
-</section>
-
-
-<footer>
-
-© 2026 StudyVerse AI | Smart Learning Powered by AI
-
-</footer>
-
-
-<!-- =====================================
+</footer><!-- =====================================
      QUIZ JAVASCRIPT
-===================================== -->
+===================================== --><script>
 
-<script>
 
 // =====================================
 // QUIZ DATABASE
 // =====================================
 
 const quizQuestions = {
+
 
 demand: [
 
@@ -255,11 +89,12 @@ options: [
 
 answer: 0,
 
-difficulty: "easy", 
+difficulty: "easy",
 
 explanation:
 "Under the law of demand, quantity demanded generally falls when price rises, ceteris paribus."
 },
+
 
 {
 question: "Which change would cause a movement along the same demand curve?",
@@ -273,11 +108,12 @@ options: [
 
 answer: 1,
 
-difficulty : "medium",
+difficulty: "medium",
 
 explanation:
 "A change in the good's own price causes movement along the existing demand curve."
 },
+
 
 {
 question: "If the price of tea rises and consumers start buying more coffee, tea and coffee are most likely:",
@@ -314,11 +150,12 @@ options: [
 
 answer: 0,
 
-difficulty : "easy",
+difficulty: "easy",
 
 explanation:
 "The Trading Account is prepared to determine gross profit or gross loss."
 },
+
 
 {
 question: "An asset account normally has which balance?",
@@ -332,10 +169,12 @@ options: [
 
 answer: 0,
 
-difficulty : "medium",
+difficulty: "medium",
+
 explanation:
 "Assets normally have debit balances because increases in assets are recorded on the debit side."
 },
+
 
 {
 question: "Which of the following is a personal account?",
@@ -378,6 +217,7 @@ explanation:
 "A contract is an agreement enforceable by law."
 },
 
+
 {
 question: "Which of the following is essential for a valid contract?",
 
@@ -390,11 +230,12 @@ options: [
 
 answer: 0,
 
-difficulty : "medium",
+difficulty: "medium",
 
 explanation:
 "Free consent is one of the essential requirements for a valid contract."
 },
+
 
 {
 question: "A person who has attained the age of majority and is of sound mind is generally:",
@@ -437,6 +278,7 @@ explanation:
 "29 has exactly two positive divisors: 1 and 29."
 },
 
+
 {
 question: "If a number is divisible by 2, its last digit must be:",
 
@@ -455,6 +297,7 @@ explanation:
 "A whole number is divisible by 2 when its last digit is even."
 },
 
+
 {
 question: "Which mathematical operation is represented by the symbol ×?",
 
@@ -467,7 +310,7 @@ options: [
 
 answer: 2,
 
-difficulty : "easy",
+difficulty: "easy",
 
 explanation:
 "The symbol × represents multiplication."
@@ -524,119 +367,125 @@ return shuffled;
 
 }
 
+
 // =====================================
 // START QUIZ
 // =====================================
 
 function startQuiz() {
 
-    const topic =
-        document.getElementById("topic").value;
+const topic =
+document.getElementById("topic").value;
 
-    const difficulty =
-        document.getElementById("difficulty").value;
+currentSubject =
+document.getElementById("subject").value;
 
-    currentSubject =
-        document.getElementById("subject").value;
+currentTopic = topic;
 
-    currentTopic = topic;
-
-    wrongAnswers = [];
+wrongAnswers = [];
 
 
-    // =====================================
-    // GET QUESTIONS FOR SELECTED TOPIC
-    // =====================================
+// =====================================
+// GET QUESTIONS FOR SELECTED TOPIC
+// =====================================
 
-    const topicQuestions =
-        quizQuestions[topic];
+const topicQuestions =
+quizQuestions[topic];
 
-    if (!topicQuestions || topicQuestions.length === 0) {
+if (!topicQuestions || topicQuestions.length === 0) {
 
-        alert("No questions available for this topic yet.");
+alert("No questions available for this topic yet.");
 
-        return;
+return;
 
-    }
-
-
-    // =====================================
-    // FILTER BY DIFFICULTY
-    // =====================================
-
-    if (difficulty === "mixed") {
-
-        questions =
-            [...topicQuestions];
-
-    }
-
-    else {
-
-        questions =
-            topicQuestions.filter(function(question) {
-
-                return question.difficulty === difficulty;
-
-            });
-
-    }
+}
 
 
-    // =====================================
-    // CHECK AVAILABLE QUESTIONS
-    // =====================================
+// =====================================
+// GET SELECTED DIFFICULTY
+// =====================================
 
-    if (questions.length === 0) {
-
-        alert(
-            "No " +
-            difficulty +
-            " questions are available for this topic yet."
-        );
-
-        return;
-
-    }
+const difficulty =
+document.getElementById("difficulty").value;
 
 
-    // =====================================
-    // STEP 6A:
-    // RANDOMIZE QUESTION ORDER
-    // =====================================
+// =====================================
+// FILTER QUESTIONS BY DIFFICULTY
+// =====================================
 
-    questions =
-        shuffleQuestions(questions);
+if (difficulty === "mixed") {
 
+questions =
+[...topicQuestions];
 
-    // =====================================
-    // RESET QUIZ
-    // =====================================
+}
 
-    currentQuestion = 0;
+else {
 
-    score = 0;
+questions =
+topicQuestions.filter(function(question) {
 
-    answered = false;
+return question.difficulty === difficulty;
 
+});
 
-    // =====================================
-    // SHOW QUIZ
-    // =====================================
-
-    document.getElementById("quizArea").style.display =
-        "block";
-
-    document.getElementById("resultArea").style.display =
-        "none";
+}
 
 
-    document.getElementById("quizArea").scrollIntoView({
-        behavior: "smooth"
-    });
+// =====================================
+// CHECK AVAILABLE QUESTIONS
+// =====================================
+
+if (questions.length === 0) {
+
+alert(
+"No " +
+difficulty +
+" questions are available for this topic yet."
+);
+
+return;
+
+}
 
 
-    showQuestion();
+// =====================================
+// STEP 6A:
+// RANDOMIZE QUESTION ORDER
+// =====================================
+
+questions =
+shuffleQuestions(questions);
+
+
+// =====================================
+// RESET QUIZ
+// =====================================
+
+currentQuestion = 0;
+
+score = 0;
+
+answered = false;
+
+
+// =====================================
+// SHOW QUIZ
+// =====================================
+
+document.getElementById("quizArea").style.display =
+"block";
+
+document.getElementById("resultArea").style.display =
+"none";
+
+
+document.getElementById("quizArea").scrollIntoView({
+behavior: "smooth"
+});
+
+
+showQuestion();
 
 }
 
@@ -647,102 +496,101 @@ function startQuiz() {
 
 function showQuestion() {
 
-    const questionData =
-        questions[currentQuestion];
+const questionData =
+questions[currentQuestion];
 
-    document.getElementById("quizProgress").textContent =
-        "Question " +
-        (currentQuestion + 1) +
-        " of " +
-        questions.length;
+document.getElementById("quizProgress").textContent =
+"Question " +
+(currentQuestion + 1) +
+" of " +
+questions.length;
 
-    document.getElementById("question").textContent =
-        questionData.question;
+document.getElementById("question").textContent =
+questionData.question;
 
-    const optionsContainer =
-        document.getElementById("options");
+const optionsContainer =
+document.getElementById("options");
 
-    optionsContainer.innerHTML = "";
+optionsContainer.innerHTML = "";
 
-    document.getElementById("feedback").textContent =
-        "";
+document.getElementById("feedback").textContent =
+"";
 
-    document.getElementById("nextButton").style.display =
-        "none";
+document.getElementById("nextButton").style.display =
+"none";
 
-    answered = false;
-
-
-    // =====================================
-    // SHUFFLE ANSWER OPTIONS
-    // =====================================
-
-    questionData.shuffledOptions =
-        questionData.options.map(function(option, index) {
-
-            return {
-                text: option,
-                originalIndex: index
-            };
-
-        });
+answered = false;
 
 
-    for (
-        let i = questionData.shuffledOptions.length - 1;
-        i > 0;
-        i--
-    ) {
+// =====================================
+// SHUFFLE ANSWER OPTIONS
+// =====================================
 
-        const randomIndex =
-            Math.floor(Math.random() * (i + 1));
+questionData.shuffledOptions =
+questionData.options.map(function(option, index) {
 
-        [
-            questionData.shuffledOptions[i],
-            questionData.shuffledOptions[randomIndex]
-        ] = [
-            questionData.shuffledOptions[randomIndex],
-            questionData.shuffledOptions[i]
-        ];
+return {
+text: option,
+originalIndex: index
+};
 
-    }
+});
 
 
-    // =====================================
-    // DISPLAY OPTIONS
-    // =====================================
+for (
+let i = questionData.shuffledOptions.length - 1;
+i > 0;
+i--
+) {
 
-    questionData.shuffledOptions.forEach(
-        function(option, index) {
+const randomIndex =
+Math.floor(Math.random() * (i + 1));
 
-            const button =
-                document.createElement("button");
-
-            button.textContent =
-                option.text;
-
-            button.style.display =
-                "block";
-
-            button.style.width =
-                "100%";
-
-            button.style.margin =
-                "10px 0";
-
-            button.onclick = function() {
-
-                selectAnswer(index);
-
-            };
-
-            optionsContainer.appendChild(button);
-
-        }
-    );
+[
+questionData.shuffledOptions[i],
+questionData.shuffledOptions[randomIndex]
+] = [
+questionData.shuffledOptions[randomIndex],
+questionData.shuffledOptions[i]
+];
 
 }
 
+
+// =====================================
+// DISPLAY OPTIONS
+// =====================================
+
+questionData.shuffledOptions.forEach(
+function(option, index) {
+
+const button =
+document.createElement("button");
+
+button.textContent =
+option.text;
+
+button.style.display =
+"block";
+
+button.style.width =
+"100%";
+
+button.style.margin =
+"10px 0";
+
+button.onclick = function() {
+
+selectAnswer(index);
+
+};
+
+optionsContainer.appendChild(button);
+
+}
+);
+
+}
 
 
 // =====================================
@@ -751,70 +599,75 @@ function showQuestion() {
 
 function selectAnswer(selectedIndex) {
 
-    if (answered) {
-        return;
-    }
+if (answered) {
+return;
+}
 
-    answered = true;
+answered = true;
 
-    const questionData = questions[currentQuestion];
+const questionData =
+questions[currentQuestion];
 
-    const buttons =
-        document.getElementById("options").children;
+const buttons =
+document.getElementById("options").children;
 
-    const selectedOption =
-        questionData.shuffledOptions[selectedIndex];
+const selectedOption =
+questionData.shuffledOptions[selectedIndex];
 
-    const correctOption =
-        questionData.shuffledOptions.find(function(option) {
-            return option.originalIndex === questionData.answer;
-        });
+const correctOption =
+questionData.shuffledOptions.find(function(option) {
 
-    if (selectedOption.originalIndex === questionData.answer) {
+return option.originalIndex === questionData.answer;
 
-        score++;
+});
 
-        document.getElementById("feedback").textContent =
-            "✅ Correct! " +
-            questionData.explanation;
 
-    }
+if (selectedOption.originalIndex === questionData.answer) {
 
-    else {
+score++;
 
-        document.getElementById("feedback").textContent =
-            "❌ Not quite. " +
-            questionData.explanation;
-
-        wrongAnswers.push({
-
-            question:
-                questionData.question,
-
-            selectedAnswer:
-                selectedOption.text,
-
-            correctAnswer:
-                correctOption.text,
-
-            explanation:
-                questionData.explanation
-
-        });
-
-    }
-
-    for (let i = 0; i < buttons.length; i++) {
-
-        buttons[i].disabled = true;
-
-    }
-
-    document.getElementById("nextButton").style.display =
-        "block";
+document.getElementById("feedback").textContent =
+"✅ Correct! " +
+questionData.explanation;
 
 }
 
+else {
+
+document.getElementById("feedback").textContent =
+"❌ Not quite. " +
+questionData.explanation;
+
+wrongAnswers.push({
+
+question:
+questionData.question,
+
+selectedAnswer:
+selectedOption.text,
+
+correctAnswer:
+correctOption.text,
+
+explanation:
+questionData.explanation
+
+});
+
+}
+
+
+for (let i = 0; i < buttons.length; i++) {
+
+buttons[i].disabled = true;
+
+}
+
+
+document.getElementById("nextButton").style.display =
+"block";
+
+}
 
 
 // =====================================
@@ -1075,8 +928,7 @@ loadQuizHistory();
 
 loadQuizHistory();
 
-</script>
+</script></body></html>
 
-</body>
+    
 
-</html>
