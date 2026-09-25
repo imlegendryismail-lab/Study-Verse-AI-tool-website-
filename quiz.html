@@ -1189,24 +1189,23 @@ explanation:
 
 };
 
-
 // =====================================
 // QUIZ VARIABLES
 // =====================================
-
 let questions = [];
-
 let currentQuestion = 0;
-
 let score = 0;
-
 let answered = false;
-
 let currentSubject = "";
-
 let currentTopic = "";
-
 let wrongAnswers = [];
+
+// =====================================
+// STEP 9C: TIMER VARIABLES
+// =====================================
+let quizTimeLimit = 0;
+let timeRemaining = 0;
+let timerInterval = null;
 
 
 // =====================================
@@ -1279,6 +1278,13 @@ return;
 const difficulty =
 document.getElementById("difficulty").value;
 
+// STEP 9C: GET SELECTED TIME LIMIT
+quizTimeLimit = Number(document.getElementById("timeLimit").value);
+
+// RESET TIMER
+clearInterval(timerInterval);
+timerInterval = null;
+timeRemaining = quizTimeLimit;
 
 // =====================================
 // FILTER QUESTIONS BY DIFFICULTY
