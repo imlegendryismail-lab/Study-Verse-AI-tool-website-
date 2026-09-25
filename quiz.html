@@ -118,8 +118,6 @@ Mathematics Basics
 </option>
 
 </select>
-
-
 <label for="difficulty">
 <strong>Difficulty</strong>
 </label>
@@ -137,6 +135,53 @@ Mathematics Basics
 <option value="medium">
 🟡 Medium
 </option>
+
+<option value="hard">
+🔴 Hard
+</option>
+
+</select>
+
+
+<!-- =====================================
+     STEP 9A: TIME LIMIT
+===================================== -->
+
+<label for="timeLimit">
+<strong>Time Limit</strong>
+</label>
+
+<select id="timeLimit">
+
+<option value="0">
+⏱️ No Time Limit
+</option>
+
+<option value="60">
+⏱️ 1 Minute
+</option>
+
+<option value="300">
+⏱️ 5 Minutes
+</option>
+
+<option value="600">
+⏱️ 10 Minutes
+</option>
+
+<option value="900">
+⏱️ 15 Minutes
+</option>
+
+</select>
+
+
+<button onclick="startQuiz()">
+🚀 Start Quiz
+</button>
+
+
+
 
 <option value="hard">
 🔴 Hard
