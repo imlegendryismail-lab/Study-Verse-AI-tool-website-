@@ -525,3 +525,106 @@ height:120px;
     border-radius: 18px;
     backdrop-filter: blur(10px);
   }
+
+/* =====================================
+   STEP 10E: PERFORMANCE ANALYTICS
+===================================== */
+
+.analytics-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 15px;
+margin-top: 20px;
+}
+
+
+.analytics-card {
+background: var(--card);
+border: 1px solid var(--border);
+border-radius: 12px;
+padding: 18px;
+text-align: center;
+}
+
+
+.analytics-card h3 {
+margin-bottom: 8px;
+font-size: 15px;
+}
+
+
+.analytics-card p {
+font-size: 24px;
+font-weight: bold;
+margin: 0;
+color: var(--secondary);
+}
+
+
+.analytics-breakdown {
+margin-top: 25px;
+}
+
+
+.analytics-breakdown h3 {
+margin-bottom: 15px;
+}
+
+
+.analytics-row {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 15px;
+margin-bottom: 15px;
+}
+
+
+.analytics-row > div {
+flex: 1;
+}
+
+
+.analytics-row > span {
+font-weight: bold;
+min-width: 55px;
+text-align: right;
+}
+
+
+.analytics-bar {
+width: 100%;
+height: 8px;
+background: var(--border);
+border-radius: 10px;
+overflow: hidden;
+margin-top: 8px;
+}
+
+
+.analytics-bar-fill {
+height: 100%;
+background: linear-gradient(
+90deg,
+var(--primary),
+var(--secondary)
+);
+border-radius: 10px;
+transition: width 0.5s ease;
+}
+
+@media (max-width: 600px) {
+
+.analytics-grid {
+grid-template-columns: 1fr;
+}
+
+.analytics-row {
+gap: 10px;
+}
+
+.analytics-row > span {
+min-width: 45px;
+}
+
+}
