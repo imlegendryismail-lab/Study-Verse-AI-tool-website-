@@ -142,22 +142,7 @@ Mathematics Basics
 
 </select>
 
-<section class="container" id="analyticsArea">
-<div class="card">
-
-<h2>📈 Performance Analytics</h2>
-
-<p id="analyticsSummary">
-Complete quizzes to see your performance analytics.
-</p>
-
-<div id="analyticsStats"></div>
-
-</div>
-</section>
-<!-- =====================================
-     STEP 9A: TIME LIMIT
-===================================== -->
+     <!--TIME LIMIT-->
 
 <label for="timeLimit">
 <strong>Time Limit</strong>
@@ -236,7 +221,9 @@ margin:15px 0;
 
 <p id="feedback"></p>
 
-<button id="nextButton"
+<button 
+type="button"
+id="nextButton"
 onclick="nextQuestion()"
 style="display:none;">
 
@@ -257,18 +244,20 @@ Next Question →
 
 <h2>🎉 Quiz Complete!</h2>
 
-<h3 id="score"></h3>
+<p id="score">
+score:0/0</p>
 
-<p id="accuracy"></p>
+<p id="accuracy">
+Accuracy:0%</p>
 
-<div id="resultMessage"></div>
+<p id="resultMessage"></p>
 
 
 <button onclick="location.reload()">
 🔄 Try Again
 </button>
 
-<button onclick="location.href='tool.html'">
+<button onclick="location.href='index.html'">
 ← Back to Tools
 </button>
 
@@ -276,37 +265,87 @@ Next Question →
 
 </section>
 
+<!-- =========================================
+     PERFORMANCE ANALYTICS
+========================================= -->
 
-<!-- QUIZ HISTORY -->
-
-<section class="container">
+<section
+class="container"
+id="analyticsArea"
+>
 
 <div class="card">
 
-<h2>📊 Quiz History</h2>
+<h2>
+📈 Performance Analytics
+</h2>
 
-<p>Your previous quiz attempts will appear here.</p>
 
-<div id="quizHistory">
-No quiz attempts yet.
+<p id="analyticsSummary">
+
+Complete quizzes to see your performance analytics.
+
+</p>
+
+
+<div id="analyticsStats">
 </div>
 
-<button onclick="loadQuizHistory()">
-🔄 Refresh History
-</button>
-
-<button onclick="clearQuizHistory()">
-🗑️ Clear History
-</button>
 
 </div>
 
 </section>
 
 
+
+<!-- =========================================
+     QUIZ HISTORY
+========================================= -->
+
+<section
+class="container"
+id="quizHistoryArea"
+>
+
+<div class="card">
+
+<h2>
+📚 Quiz History
+</h2>
+
+
+<div id="quizHistory">
+
+No quiz history yet.
+
+</div>
+
+
+<button
+type="button"
+onclick="clearQuizHistory()"
+>
+
+🗑️ Clear History
+
+</button>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
 <footer>
 
-© 2026 StudyVerse AI | Smart Learning Powered by AI
+<p>
+© 2026 StudyVerse AI. Built for students.
+</p>
 
 </footer>
 
