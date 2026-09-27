@@ -1837,6 +1837,8 @@ localStorage.setItem(
 JSON.stringify(results)
 );
 
+load analytics();
+
 }
 
 
@@ -1914,6 +1916,304 @@ history.appendChild(item);
 
 }
 
+// =====================================
+// STEP 10C: ANALYTICS BREAKDOWN
+// =====================================
+
+function loadAnalytics() {
+
+const results =
+JSON.parse(localStorage.getItem("quizResults")) || [];
+
+const summary =
+document.getElementById("analyticsSummary");
+
+const stats =
+document.getElementById("analyticsStats");
+
+
+if (results.length === 0) {
+
+summary.textContent =
+"Complete quizzes to see your performance analytics.";
+
+stats.innerHTML = "";
+
+return;
+
+}
+
+
+// =====================================
+// OVERALL STATISTICS
+// =====================================
+
+const totalQuizzes =
+results.length;
+
+
+const totalQuestions =
+results.reduce(function(total, result) {
+
+return total + Number(result.total || 0);
+
+}, 0);
+
+
+const totalAccuracy =
+results.reduce(function(total, result) {
+
+return total + Number(result.accuracy || 0);
+
+}, 0);
+
+
+const averageAccuracy =
+Math.round(totalAccuracy / totalQuizzes);
+
+
+const bestAccuracy =
+Math.max.apply(
+null,
+results.map(function(result) {
+
+return Number(result.accuracy || 0);
+
+})
+);
+
+
+// =====================================
+// TOPIC PERFORMANCE
+// =====================================
+
+const topicData = {};
+
+
+results.forEach(function(result) {
+
+const topic =
+result.topic || "Unknown";
+
+
+if (!topicData[topic]) {
+
+topicData[topic] = {
+attempts: 0,
+accuracy: 0
+};
+
+}
+
+
+topicData[topic].attempts++;
+
+topicData[topic].accuracy +=
+Number(result.accuracy || 0);
+
+});
+
+
+let topicHTML = "";
+
+
+Object.keys(topicData).forEach(function(topic) {
+
+const average =
+Math.round(
+topicData[topic].accuracy /
+topicData[topic].attempts
+);
+
+
+topicHTML += `
+
+<div class="analytics-row">
+
+<div>
+
+<strong>
+${topic}
+</strong>
+
+<div class="analytics-bar">
+
+<div
+class="analytics-bar-fill"
+style="width:${average}%"
+></div>
+
+</div>
+
+</div>
+
+<span>
+${average}%
+</span>
+
+</div>
+
+`;
+
+});
+
+
+// =====================================
+// DIFFICULTY PERFORMANCE
+// =====================================
+
+const difficultyData = {};
+
+
+results.forEach(function(result) {
+
+const difficulty =
+result.difficulty || "mixed";
+
+
+if (!difficultyData[difficulty]) {
+
+difficultyData[difficulty] = {
+attempts: 0,
+accuracy: 0
+};
+
+}
+
+
+difficultyData[difficulty].attempts++;
+
+difficultyData[difficulty].accuracy +=
+Number(result.accuracy || 0);
+
+});
+
+
+let difficultyHTML = "";
+
+
+Object.keys(difficultyData).forEach(function(difficulty) {
+
+const average =
+Math.round(
+difficultyData[difficulty].accuracy /
+difficultyData[difficulty].attempts
+);
+
+
+const difficultyName =
+difficulty.charAt(0).toUpperCase() +
+difficulty.slice(1);
+
+
+difficultyHTML += `
+
+<div class="analytics-row">
+
+<div>
+
+<strong>
+${difficultyName}
+</strong>
+
+<div class="analytics-bar">
+
+<div
+class="analytics-bar-fill"
+style="width:${average}%"
+></div>
+
+</div>
+
+</div>
+
+<span>
+${average}%
+</span>
+
+</div>
+
+`;
+
+});
+
+
+// =====================================
+// DISPLAY ANALYTICS
+// =====================================
+
+summary.textContent =
+"You have completed " +
+totalQuizzes +
+" quiz" +
+(totalQuizzes === 1 ? "" : "zes") +
+" so far.";
+
+
+stats.innerHTML = `
+
+<div class="analytics-grid">
+
+
+<div class="analytics-card">
+
+<h3>📝 Total Quizzes</h3>
+
+<p>${totalQuizzes}</p>
+
+</div>
+
+
+<div class="analytics-card">
+
+<h3>📊 Average Accuracy</h3>
+
+<p>${averageAccuracy}%</p>
+
+</div>
+
+
+<div class="analytics-card">
+
+<h3>🏆 Best Accuracy</h3>
+
+<p>${bestAccuracy}%</p>
+
+</div>
+
+
+<div class="analytics-card">
+
+<h3>❓ Questions Answered</h3>
+
+<p>${totalQuestions}</p>
+
+</div>
+
+
+</div>
+
+
+<div class="analytics-breakdown">
+
+<h3>📚 Performance by Topic</h3>
+
+${topicHTML}
+
+</div>
+
+
+<div class="analytics-breakdown">
+
+<h3>🎯 Performance by Difficulty</h3>
+
+${difficultyHTML}
+
+</div>
+
+`;
+
+}
 
 // =====================================
 // CLEAR QUIZ HISTORY
@@ -1937,6 +2237,8 @@ loadQuizHistory();
 // =====================================
 
 loadQuizHistory();
+
+loadAnalytics();
 
 </script>
 
