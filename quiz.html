@@ -142,7 +142,19 @@ Mathematics Basics
 
 </select>
 
+<section class="container" id="analyticsArea">
+<div class="card">
 
+<h2>📈 Performance Analytics</h2>
+
+<p id="analyticsSummary">
+Complete quizzes to see your performance analytics.
+</p>
+
+<div id="analyticsStats"></div>
+
+</div>
+</section>
 <!-- =====================================
      STEP 9A: TIME LIMIT
 ===================================== -->
@@ -1373,6 +1385,79 @@ showQuestion();
 start timer();
 }
 
+// =====================================
+// STEP 9D: COUNTDOWN TIMER
+// =====================================
+
+function startTimer() {
+
+if (quizTimeLimit <= 0) {
+document.getElementById("quizTimer").style.display = "none";
+return;
+}
+
+document.getElementById("quizTimer").style.display = "block";
+
+updateTimerDisplay();
+
+timerInterval = setInterval(function() {
+
+timeRemaining--;
+
+updateTimerDisplay();
+
+if (timeRemaining <= 0) {
+clearInterval(timerInterval);
+timerInterval = null;
+timeUp();
+}
+
+}, 1000);
+}
+
+// =====================================
+// STEP 9E: TIME UP
+// =====================================
+function timeUp() {
+
+clearInterval(timerInterval);
+timerInterval = null;
+
+answered = true;
+
+document.getElementById("quizTimer").style.display = "none";
+
+document.getElementById("feedback").textContent =
+"⏰ Time's up! Your quiz has ended.";
+
+const buttons = document.getElementById("options").children;
+
+for (let i = 0; i < buttons.length; i++) {
+buttons[i].disabled = true;
+}
+
+document.getElementById("nextButton").style.display = "none";
+
+setTimeout(function() {
+showResult();
+}, 1000);
+}
+
+
+// =====================================
+// UPDATE TIMER DISPLAY
+// =====================================
+function updateTimerDisplay() {
+
+const minutes = Math.floor(timeRemaining / 60);
+const seconds = timeRemaining % 60;
+
+const formattedMinutes = String(minutes).padStart(2, "0");
+const formattedSeconds = String(seconds).padStart(2, "0");
+
+document.getElementById("timerDisplay").textContent =
+formattedMinutes + ":" + formattedSeconds;
+}
 
 // =====================================
 // SHOW QUESTION
@@ -1686,21 +1771,12 @@ return result.topic === currentTopic;
 
 
 const quizResult = {
-
-subject:
-currentSubject,
-
-topic:
-currentTopic,
-
-score:
-score,
-
-total:
-questions.length,
-
-accuracy:
-percentage,
+subject: currentSubject,
+topic: currentTopic,
+difficulty: document.getElementById("difficulty").value,
+score: score,
+total: questions.length,
+accuracy: percentage,
 
 wrongAnswers:
 wrongAnswers,
