@@ -307,6 +307,17 @@ Complete quizzes to discover topics that need more revision.
 <div id="knowledgeGapStats">
 </div>
 
+<div
+id="weakQuestionStats"
+style="margin-top:20px;"
+>
+</div>
+<div
+id="revisionlist"
+style="margin-top:20px;"
+>
+</div>
+
 </div>
 
 </section>
@@ -2255,7 +2266,309 @@ loadQuizHistory();
 
 loadAnalytics();
 
-loadknowledgeGaps();
+// =====================================
+// STEP 11B: INDIVIDUAL WRONG ANSWERS
+// =====================================
+
+function loadKnowledgeGaps() {
+
+const results =
+JSON.parse(localStorage.getItem("quizResults")) || [];
+
+const summary =
+document.getElementById("knowledgeGapSummary");
+
+const stats =
+document.getElementById("knowledgeGapStats");
+
+const weakQuestions =
+document.getElementById("weakQuestionStats");
+
+const revisionList = 
+document.getlementById("revisionList");
+
+
+if (!results.length) {
+
+summary.textContent =
+"Complete quizzes to discover topics that need more revision.";
+
+stats.innerHTML = "";
+weakQuestions.innerHTML = "";
+
+return;
+
+}
+
+
+// =====================================
+// TOPIC ANALYSIS
+// =====================================
+
+const topicData = {};
+
+
+results.forEach(function(result) {
+
+const topic =
+result.topic || "Unknown";
+
+const accuracy =
+Number(result.accuracy || 0);
+
+
+if (!topicData[topic]) {
+
+topicData[topic] = {
+attempts: 0,
+accuracy: 0
+};
+
+}
+
+
+topicData[topic].attempts++;
+
+topicData[topic].accuracy += accuracy;
+
+});
+
+
+const weakTopics = [];
+
+
+Object.keys(topicData).forEach(function(topic) {
+
+const average =
+Math.round(
+topicData[topic].accuracy /
+topicData[topic].attempts
+);
+
+
+if (average < 60) {
+
+weakTopics.push({
+topic: topic,
+accuracy: average
+});
+
+}
+
+});
+
+
+if (weakTopics.length === 0) {
+
+summary.textContent =
+"No major knowledge gaps detected yet. Keep practicing! 🎉";
+
+stats.innerHTML = "";
+
+} else {
+
+summary.textContent =
+"These topics may need additional revision:";
+
+
+let gapHTML = "";
+
+
+weakTopics.forEach(function(item) {
+
+gapHTML += `
+
+<div class="analytics-row">
+
+<div>
+
+<strong>
+${item.topic}
+</strong>
+
+<div class="analytics-bar">
+
+<div
+class="analytics-bar-fill"
+style="width:${item.accuracy}%"
+></div>
+
+</div>
+
+</div>
+
+<span>
+${item.accuracy}%
+</span>
+
+</div>
+
+`;
+
+});
+
+
+stats.innerHTML = gapHTML;
+
+}
+
+
+// =====================================
+// INDIVIDUAL WRONG ANSWER ANALYSIS
+// =====================================
+
+const wrongAnswerData = {};
+
+
+results.forEach(function(result) {
+
+if (!result.wrongAnswers) {
+return;
+}
+
+
+result.wrongAnswers.forEach(function(item) {
+
+const question =
+item.question || "Unknown Question";
+
+
+if (!wrongAnswerData[question]) {
+
+wrongAnswerData[question] = {
+count: 0,
+correctAnswer: item.correctAnswer || "",
+explanation: item.explanation || ""
+};
+
+}
+
+
+wrongAnswerData[question].count++;
+
+});
+
+});
+
+
+// =====================================
+// FIND REPEATED MISTAKES
+// =====================================
+
+const repeatedMistakes =
+Object.keys(wrongAnswerData)
+.filter(function(question) {
+
+return wrongAnswerData[question].count >= 2;
+
+})
+.sort(function(a, b) {
+
+return wrongAnswerData[b].count -
+wrongAnswerData[a].count;
+
+});
+
+
+if (repeatedMistakes.length === 0) {
+
+weakQuestions.innerHTML = `
+
+<p>
+🎉 No repeated mistakes detected yet.
+</p>
+
+`;
+revisionList.innerHTML="";
+
+return;
+
+}
+
+
+// =====================================
+// DISPLAY REPEATED MISTAKES
+// =====================================
+
+let questionHTML = `
+
+<h3>
+⚠️ Repeated Mistakes
+</h3>
+
+<p>
+These questions have been answered incorrectly multiple times.
+</p>
+
+`;
+
+
+repeatedMistakes.forEach(function(question) {
+
+const data =
+wrongAnswerData[question];
+
+
+questionHTML += `
+
+<div class="analytics-row">
+
+<div>
+
+<strong>
+${question}
+</strong>
+
+<p>
+❌ Incorrect attempts:
+${data.count}
+</p>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+
+weakQuestions.innerHTML =
+questionHTML;
+
+revisionList.innerHTML = `
+
+<h3>
+📖 Revision List
+</h3>
+
+<p>
+Focus your next revision session on these repeated mistakes.
+</p>
+
+${repeatedMistakes.map(function(question) {
+
+return `
+
+<div class="analytics-row">
+
+<div>
+
+<strong>
+${question}
+</strong>
+
+</div>
+
+</div>
+
+`;
+
+}).join("")}
+
+`;
+
+}
 
 </script>
 
