@@ -295,6 +295,13 @@ Complete quizzes to see your performance analytics.
 id="knowledgeGapArea"
 style="margin-top:25px;"
 >
+</div>
+
+<div
+id="knowledgeGapDiagnosis"
+style="margin-bottom:20px;"
+>
+</div>
 
 <h3>
 🧠 Knowledge Gaps
@@ -2281,6 +2288,9 @@ document.getElementById("knowledgeGapSummary");
 const stats =
 document.getElementById("knowledgeGapStats");
 
+const diagnosis = 
+document.getElementById("knowledgeGapDiagnosis");
+
 const weakQuestions =
 document.getElementById("weakQuestionStats");
 
@@ -2336,6 +2346,8 @@ topicData[topic].accuracy += accuracy;
 
 const weakTopics = [];
 
+let weakest topic = null;
+
 
 Object.keys(topicData).forEach(function(topic) {
 
@@ -2357,6 +2369,62 @@ accuracy: average
 
 });
 
+if (weakTopics.length > 0) {
+
+weakestTopic =
+weakTopics.reduce(function(lowest, current) {
+
+return current.accuracy < lowest.accuracy
+? current
+: lowest;
+
+});
+
+diagnosis.innerHTML = `
+
+<div class="analytics-card">
+
+<h3>
+⚠️ Needs Attention
+</h3>
+
+<p>
+<strong>${weakestTopic.topic}</strong>
+</p>
+
+<p>
+Your current accuracy is
+<strong>${weakestTopic.accuracy}%</strong>.
+</p>
+
+<p>
+Focus on this topic during your next revision session.
+</p>
+
+</div>
+
+`;
+
+} else {
+
+diagnosis.innerHTML = `
+
+<div class="analytics-card">
+
+<h3>
+🎉 Looking Good!
+</h3>
+
+<p>
+No major topic-level weakness detected yet.
+Keep practicing consistently.
+</p>
+
+</div>
+
+`;
+
+}
 
 if (weakTopics.length === 0) {
 
