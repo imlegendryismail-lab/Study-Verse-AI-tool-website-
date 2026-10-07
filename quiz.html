@@ -1,10 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Quiz & Test Engine - StudyVerse AI</title>
 
@@ -12,9 +14,13 @@
 
 </head>
 
+
 <body>
 
-<!-- NAVBAR -->
+
+<!-- =========================================
+     NAVBAR
+========================================= -->
 
 <nav>
 
@@ -28,23 +34,39 @@
 
 </div>
 
-<span class="logo-text">StudyVerse AI</span>
+<span class="logo-text">
+StudyVerse AI
+</span>
 
 </div>
 
+
 <div>
 
-<a href="index.html">Home</a>
-<a href="dashboard.html">Dashboard</a>
-<a href="study.html">Timer</a>
-<a href="planner.html">Planner</a>
+<a href="index.html">
+Home
+</a>
+
+<a href="dashboard.html">
+Dashboard
+</a>
+
+<a href="study.html">
+Timer
+</a>
+
+<a href="planner.html">
+Planner
+</a>
 
 </div>
 
 </nav>
 
 
-<!-- HERO -->
+<!-- =========================================
+     HERO
+========================================= -->
 
 <section class="hero">
 
@@ -59,19 +81,29 @@ Test your knowledge and discover what you need to improve.
 </section>
 
 
-<!-- QUIZ SETUP -->
+<!-- =========================================
+     QUIZ SETUP
+========================================= -->
 
 <section class="container">
 
 <div class="card">
 
-<h2>Start Your Quiz</h2>
+<h2>
+Start Your Quiz
+</h2>
 
-<p>Select a subject and topic to begin.</p>
+<p>
+Select a subject and topic to begin.
+</p>
 
+
+<!-- SUBJECT -->
 
 <label for="subject">
-<strong>Subject</strong>
+<strong>
+Subject
+</strong>
 </label>
 
 <select id="subject">
@@ -95,8 +127,12 @@ Quantitative Aptitude
 </select>
 
 
+<!-- TOPIC -->
+
 <label for="topic">
-<strong>Topic</strong>
+<strong>
+Topic
+</strong>
 </label>
 
 <select id="topic">
@@ -118,8 +154,14 @@ Mathematics Basics
 </option>
 
 </select>
+
+
+<!-- DIFFICULTY -->
+
 <label for="difficulty">
-<strong>Difficulty</strong>
+<strong>
+Difficulty
+</strong>
 </label>
 
 <select id="difficulty">
@@ -142,10 +184,13 @@ Mathematics Basics
 
 </select>
 
-     <!--TIME LIMIT-->
+
+<!-- TIME LIMIT -->
 
 <label for="timeLimit">
-<strong>Time Limit</strong>
+<strong>
+Time Limit
+</strong>
 </label>
 
 <select id="timeLimit">
@@ -173,22 +218,15 @@ Mathematics Basics
 </select>
 
 
-<button onclick="startQuiz()">
+<!-- START BUTTON -->
+
+<button
+type="button"
+onclick="startQuiz()"
+>
+
 🚀 Start Quiz
-</button>
 
-
-
-
-<option value="hard">
-🔴 Hard
-</option>
-
-</select>
-
-
-<button onclick="startQuiz()">
-🚀 Start Quiz
 </button>
 
 </div>
@@ -196,74 +234,139 @@ Mathematics Basics
 </section>
 
 
-<!-- QUIZ AREA -->
+<!-- =========================================
+     QUIZ AREA
+========================================= -->
 
-<section class="container" id="quizArea" style="display:none;">
+<section
+class="container"
+id="quizArea"
+style="display:none;"
+>
 
 <div class="card">
 
-<div id="quizProgress"></div>
 
-<div id="quizTimer"
+<!-- QUIZ PROGRESS -->
+
+<div id="quizProgress">
+</div>
+
+
+<!-- TIMER -->
+
+<div
+id="quizTimer"
 style="
 display:none;
 font-size:20px;
 font-weight:bold;
 text-align:center;
 margin:15px 0;
-">
-⏱️ Time: <span id="timerDisplay">00:00</span>
+"
+>
+
+⏱️ Time:
+
+<span id="timerDisplay">
+00:00
+</span>
+
 </div>
 
-<h2 id="question"></h2>
 
-<div id="options"></div>
+<!-- QUESTION -->
 
-<p id="feedback"></p>
+<h2 id="question">
+</h2>
 
-<button 
+
+<!-- OPTIONS -->
+
+<div id="options">
+</div>
+
+
+<!-- FEEDBACK -->
+
+<p id="feedback">
+</p>
+
+
+<!-- NEXT BUTTON -->
+
+<button
 type="button"
 id="nextButton"
 onclick="nextQuestion()"
-style="display:none;">
+style="display:none;"
+>
 
 Next Question →
 
 </button>
 
+
 </div>
 
 </section>
 
 
-<!-- RESULT AREA -->
+<!-- =========================================
+     RESULT AREA
+========================================= -->
 
-<section class="container" id="resultArea" style="display:none;">
+<section
+class="container"
+id="resultArea"
+style="display:none;"
+>
 
 <div class="card">
 
-<h2>🎉 Quiz Complete!</h2>
+<h2>
+🎉 Quiz Complete!
+</h2>
+
 
 <p id="score">
-score:0/0</p>
+Score: 0 / 0
+</p>
+
 
 <p id="accuracy">
-Accuracy:0%</p>
+Accuracy: 0%
+</p>
 
-<p id="resultMessage"></p>
+
+<p id="resultMessage">
+</p>
 
 
-<button onclick="location.reload()">
+<button
+type="button"
+onclick="location.reload()"
+>
+
 🔄 Try Again
+
 </button>
 
-<button onclick="location.href='index.html'">
+
+<button
+type="button"
+onclick="location.href='index.html'"
+>
+
 ← Back to Tools
+
 </button>
+
 
 </div>
 
 </section>
+
 
 <!-- =========================================
      PERFORMANCE ANALYTICS
@@ -291,11 +394,15 @@ Complete quizzes to see your performance analytics.
 <div id="analyticsStats">
 </div>
 
+
+<!-- =====================================
+     KNOWLEDGE GAP AREA
+===================================== -->
+
 <div
 id="knowledgeGapArea"
 style="margin-top:25px;"
 >
-</div>
 
 <div
 id="knowledgeGapDiagnosis"
@@ -303,32 +410,69 @@ style="margin-bottom:20px;"
 >
 </div>
 
+
 <h3>
 🧠 Knowledge Gaps
 </h3>
 
+
 <p id="knowledgeGapSummary">
+
 Complete quizzes to discover topics that need more revision.
+
 </p>
+
 
 <div id="knowledgeGapStats">
 </div>
+
 
 <div
 id="weakQuestionStats"
 style="margin-top:20px;"
 >
 </div>
+
+
 <div
-id="revisionlist"
+id="revisionList"
 style="margin-top:20px;"
 >
 </div>
 
 </div>
 
-</section>
 
+<!-- =====================================
+     MASTERY DASHBOARD
+===================================== -->
+
+<div
+id="masteryArea"
+style="margin-top:25px;"
+>
+
+<h3>
+🏆 Topic Mastery
+</h3>
+
+
+<p id="masterySummary">
+
+Complete quizzes to build your topic mastery.
+
+</p>
+
+
+<div id="masteryStats">
+</div>
+
+</div>
+
+
+</div>
+
+</section>
 
 
 <!-- =========================================
@@ -369,7 +513,6 @@ onclick="clearQuizHistory()"
 </section>
 
 
-
 <!-- =========================================
      FOOTER
 ========================================= -->
@@ -383,30 +526,41 @@ onclick="clearQuizHistory()"
 </footer>
 
 
-<!-- =====================================
+<!-- =========================================
      QUIZ JAVASCRIPT
-===================================== -->
+========================================= -->
 
 <script>
 
 
-// =====================================
+// =========================================
 // QUIZ DATABASE
-// =====================================
+// =========================================
 
 const quizQuestions = {
+
+
+/* =========================================
+   DEMAND & SUPPLY
+========================================= */
 
 demand: [
 
 {
+
 question:
 "According to the law of demand, assuming other factors remain constant, what generally happens when the price of a good increases?",
 
 options: [
+
 "Quantity demanded decreases",
+
 "Quantity demanded increases",
+
 "Demand always increases",
+
 "Demand remains unchanged"
+
 ],
 
 answer: 0,
@@ -418,16 +572,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "Which change would cause a movement along the same demand curve?",
 
 options: [
+
 "A change in consumer income",
+
 "A change in the price of the good itself",
+
 "A change in consumer preferences",
+
 "A change in the price of a substitute"
+
 ],
 
 answer: 1,
@@ -439,16 +599,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "If the price of tea rises and consumers start buying more coffee, tea and coffee are most likely:",
 
 options: [
+
 "Complementary goods",
+
 "Substitute goods",
+
 "Inferior goods",
+
 "Public goods"
+
 ],
 
 answer: 1,
@@ -460,16 +626,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "Which of the following would generally cause the demand curve for a normal good to shift to the right?",
 
 options: [
+
 "A fall in consumer income",
+
 "An increase in the price of the good itself",
+
 "An increase in consumer income",
+
 "A fall in the price of the good itself"
+
 ],
 
 answer: 2,
@@ -481,16 +653,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "Which of the following is an exception to the usual law of demand?",
 
 options: [
+
 "Normal goods",
+
 "Giffen goods",
+
 "Substitute goods",
+
 "Complementary goods"
+
 ],
 
 answer: 1,
@@ -502,16 +680,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "If the price of a complementary good rises, what will generally happen to the demand for the related good?",
 
 options: [
+
 "It will increase",
+
 "It will decrease",
+
 "It will remain permanently unchanged",
+
 "It will always become perfectly elastic"
+
 ],
 
 answer: 1,
@@ -523,16 +707,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "A fall in the price of a good, other things remaining constant, causes:",
 
 options: [
+
 "A shift of the demand curve to the right",
+
 "A movement along the demand curve",
+
 "A shift of the demand curve to the left",
+
 "No change in quantity demanded"
+
 ],
 
 answer: 1,
@@ -544,16 +734,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "Which factor can influence the price elasticity of demand for a product?",
 
 options: [
+
 "Availability of substitutes",
+
 "Only the colour of the product",
+
 "Only the seller's name",
+
 "None of the above"
+
 ],
 
 answer: 0,
@@ -565,16 +761,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "If demand for a product is perfectly inelastic, a change in its price will cause:",
 
 options: [
+
 "A proportionately equal change in quantity demanded",
+
 "No change in quantity demanded",
+
 "An infinite change in quantity demanded",
+
 "Demand to become perfectly elastic"
+
 ],
 
 answer: 1,
@@ -586,16 +788,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "A fall in the price of a normal good causes quantity demanded to rise. Which statement correctly explains this movement?",
 
 options: [
+
 "It is an increase in demand caused by a change in tastes",
+
 "It is an increase in quantity demanded caused by a change in the good's own price",
+
 "It is an increase in demand caused by a rise in consumer income",
+
 "It is a decrease in demand caused by a fall in the good's own price"
+
 ],
 
 answer: 1,
@@ -607,16 +815,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "Suppose the price of a product rises while consumers' incomes and preferences remain unchanged. If the quantity demanded falls proportionately more than the price rises, the demand for the product is:",
 
 options: [
+
 "Perfectly inelastic",
+
 "Relatively inelastic",
+
 "Unitary elastic",
+
 "Relatively elastic"
+
 ],
 
 answer: 3,
@@ -630,6 +844,11 @@ explanation:
 
 ],
 
+
+/* =========================================
+   ACCOUNTING
+========================================= */
+
 accounting: [
 
 {
@@ -638,10 +857,15 @@ question:
 "Which account is generally prepared to ascertain the gross profit or gross loss of a business?",
 
 options: [
+
 "Trading Account",
+
 "Capital Account",
+
 "Cash Account",
+
 "Suspense Account"
+
 ],
 
 answer: 0,
@@ -653,16 +877,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "An asset account normally has which balance?",
 
 options: [
+
 "Debit balance",
+
 "Credit balance",
+
 "Nil balance only",
+
 "Either balance in every case"
+
 ],
 
 answer: 0,
@@ -674,16 +904,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "Which of the following is a personal account?",
 
 options: [
+
 "Machinery Account",
+
 "Purchases Account",
+
 "Ramesh Account",
+
 "Rent Account"
+
 ],
 
 answer: 2,
@@ -695,16 +931,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "Which of the following is classified as a real account?",
 
 options: [
+
 "Cash Account",
+
 "Ram's Account",
+
 "Salary Account",
+
 "Commission Received Account"
+
 ],
 
 answer: 0,
@@ -716,16 +958,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "According to the traditional rules of accounting, which type of account is debited when an expense is incurred?",
 
 options: [
+
 "Personal account",
+
 "Real account",
+
 "Nominal account",
+
 "Representative personal account only"
+
 ],
 
 answer: 2,
@@ -737,16 +985,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "A business purchases furniture for cash. Which account is debited?",
 
 options: [
+
 "Cash Account",
+
 "Furniture Account",
+
 "Purchases Account",
+
 "Capital Account"
+
 ],
 
 answer: 1,
@@ -758,16 +1012,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "When goods are purchased for cash, which accounts are affected?",
 
 options: [
+
 "Purchases Account and Cash Account",
+
 "Sales Account and Cash Account",
+
 "Capital Account and Purchases Account",
+
 "Furniture Account and Cash Account"
+
 ],
 
 answer: 0,
@@ -779,16 +1039,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "Which accounting principle requires every transaction to have at least two effects?",
 
 options: [
+
 "Matching concept",
+
 "Dual aspect concept",
+
 "Going concern concept",
+
 "Consistency concept"
+
 ],
 
 answer: 1,
@@ -800,16 +1066,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "A trial balance agrees, but which error can still remain undetected?",
 
 options: [
+
 "Complete omission of a transaction from the books",
+
 "Posting a debit entry to the credit side of the wrong account",
+
 "Posting a transaction with unequal debit and credit amounts",
+
 "Recording only one side of a transaction"
+
 ],
 
 answer: 0,
@@ -821,16 +1093,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "A business purchases machinery for ₹80,000 and pays ₹5,000 for its installation. If the machinery is recorded at ₹80,000 instead of its total cost, which accounting principle is primarily affected?",
 
 options: [
+
 "Matching principle",
+
 "Business entity principle",
+
 "Cost principle",
+
 "Going concern principle"
+
 ],
 
 answer: 2,
@@ -844,6 +1122,11 @@ explanation:
 
 ],
 
+
+/* =========================================
+   CONTRACT LAW
+========================================= */
+
 contract: [
 
 {
@@ -852,10 +1135,15 @@ question:
 "Under the Indian Contract Act, 1872, an agreement enforceable by law is called:",
 
 options: [
+
 "A contract",
+
 "A proposal",
+
 "A promise only",
+
 "An invitation to offer"
+
 ],
 
 answer: 0,
@@ -867,16 +1155,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "Which of the following is essential for a valid contract?",
 
 options: [
+
 "Free consent",
+
 "Unlawful object",
+
 "Absence of consideration in every case",
+
 "Minority of both parties"
+
 ],
 
 answer: 0,
@@ -888,16 +1182,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "A person who has attained the age of majority and is of sound mind is generally:",
 
 options: [
+
 "Competent to contract",
+
 "Always incapable of contracting",
+
 "Competent only as a minor",
+
 "Never allowed to enter contracts"
+
 ],
 
 answer: 0,
@@ -909,16 +1209,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "Under the Indian Contract Act, 1872, a proposal when accepted becomes a:",
 
 options: [
+
 "Promise",
+
 "Consideration",
+
 "Void agreement",
+
 "Counter-offer"
+
 ],
 
 answer: 0,
@@ -930,16 +1236,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "Which of the following would generally make an agreement void?",
 
 options: [
+
 "Lawful consideration",
+
 "Lawful object",
+
 "Unlawful object",
+
 "Free consent"
+
 ],
 
 answer: 2,
@@ -951,16 +1263,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "Consent is said to be free when it is not caused by:",
 
 options: [
+
 "Coercion, undue influence, fraud, misrepresentation or mistake",
+
 "Offer and acceptance",
+
 "Lawful consideration",
+
 "Competency of parties"
+
 ],
 
 answer: 0,
@@ -972,16 +1290,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "X offers to sell his car to Y for ₹3,00,000. Y replies, 'I will buy it for ₹2,70,000.' Y's reply is generally treated as:",
 
 options: [
+
 "Acceptance of the original offer",
+
 "A counter-offer",
+
 "A promise",
+
 "An unconditional acceptance"
+
 ],
 
 answer: 1,
@@ -993,16 +1317,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "A offers to sell a laptop to B for ₹50,000. B says, 'I accept your offer, provided you include a printer.' What is the effect?",
 
 options: [
+
 "B has absolutely accepted the offer",
+
 "B has made an unconditional acceptance",
+
 "B has not accepted the original offer absolutely",
+
 "The original offer automatically becomes a contract"
+
 ],
 
 answer: 2,
@@ -1014,16 +1344,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "An offer is made to sell a specific car for ₹5,00,000. Before the offeree accepts it, the offeror dies. The offeree has no knowledge of the death and communicates acceptance without knowing it. Under the general rule, the acceptance is:",
 
 options: [
+
 "Valid because the offeree accepted before learning of the death",
+
 "Valid because every offer remains open until its stated expiry",
+
 "Invalid because an offer may lapse when the offeror dies and the offeree becomes aware of the death",
+
 "Valid because death of the offeror can never affect an offer"
+
 ],
 
 answer: 2,
@@ -1035,16 +1371,22 @@ explanation:
 
 },
 
+
 {
 
 question:
 "Which situation most clearly distinguishes a counter-offer from a mere request for information?",
 
 options: [
+
 "The offeree asks whether the offeror would consider a lower price",
+
 "The offeree asks when delivery would take place",
+
 "The offeree asks whether the quoted price is negotiable",
+
 "The offeree says, 'I accept, but only if you reduce the price by ₹10,000'"
+
 ],
 
 answer: 3,
@@ -1058,1724 +1400,1471 @@ explanation:
 
 ],
 
+
+/* =========================================
+   MATHEMATICS
+========================================= */
+
 math: [
-
-{
-
-question:
-"Which of the following is a prime number?",
-
-options: [
-"21",
-"29",
-"35",
-"39"
-],
-
-answer: 1,
-
-difficulty: "easy",
-
-explanation:
-"29 has exactly two positive divisors: 1 and 29."
-
-},
-
-{
-
-question:
-"If a number is divisible by 2, its last digit must be:",
-
-options: [
-"Odd",
-"Even",
-"Prime",
-"Zero only"
-],
-
-answer: 1,
-
-difficulty: "easy",
-
-explanation:
-"A whole number is divisible by 2 when its last digit is even."
-
-},
-
-{
-
-question:
-"Which mathematical operation is represented by the symbol ×?",
-
-options: [
-"Addition",
-"Subtraction",
-"Multiplication",
-"Division"
-],
-
-answer: 2,
-
-difficulty: "easy",
-
-explanation:
-"The symbol × represents multiplication."
-
-},
-
-{
-
-question:
-"If a number is divisible by 5, its last digit must be:",
-
-options: [
-"1 or 3",
-"2 or 4",
-"0 or 5",
-"6 or 8"
-],
-
-answer: 2,
-
-difficulty: "medium",
-
-explanation:
-"A whole number is divisible by 5 when its last digit is either 0 or 5."
-
-},
-
-{
-
-question:
-"Which of the following is an irrational number?",
-
-options: [
-"1/2",
-"0.75",
-"√2",
-"4"
-],
-
-answer: 2,
-
-difficulty: "medium",
-
-explanation:
-"√2 cannot be expressed as a ratio of two integers and is therefore irrational."
-
-},
-
-{
-
-question:
-"If x + 7 = 15, what is the value of x?",
-
-options: [
-"6",
-"7",
-"8",
-"9"
-],
-
-answer: 2,
-
-difficulty: "medium",
-
-explanation:
-"Subtracting 7 from both sides gives x = 15 − 7 = 8."
-
-},
-
-{
-
-question:
-"What is the value of 2³ × 2²?",
-
-options: [
-"16",
-"32",
-"64",
-"128"
-],
-
-answer: 1,
-
-difficulty: "medium",
-
-explanation:
-"When powers have the same base, their exponents are added: 2³ × 2² = 2⁵ = 32."
-
-},
-
-{
-
-question:
-"If the ratio of A to B is 3:5 and A = 18, what is B?",
-
-options: [
-"24",
-"27",
-"30",
-"36"
-],
-
-answer: 2,
-
-difficulty: "medium",
-
-explanation:
-"3:5 = 18:B. Since 18 ÷ 3 = 6, B = 5 × 6 = 30."
-
-},
-
-{
-
-question:
-"If the average of five numbers is 18 and four of the numbers are 12, 15, 20 and 25, what is the fifth number?",
-
-options: [
-"16",
-"18",
-"20",
-"22"
-],
-
-answer: 1,
-
-difficulty: "hard",
-
-explanation:
-"The total of the five numbers is 5 × 18 = 90. The four known numbers total 72, so the fifth number is 90 − 72 = 18."
-
-},
-
-{
-
-question:
-"A number is divisible by both 6 and 8. Which of the following must also divide the number?",
-
-options: [
-"9",
-"12",
-"16",
-"18"
-],
-
-answer: 1,
-
-difficulty: "hard",
-
-explanation:
-"A number divisible by both 6 and 8 must be divisible by their least common multiple, which is 24. Therefore, it must also be divisible by 12."
-}
-
-]
-
-};
-
-// =====================================
-// QUIZ VARIABLES
-// =====================================
-let questions = [];
-let currentQuestion = 0;
-let score = 0;
-let answered = false;
-let currentSubject = "";
-let currentTopic = "";
-let wrongAnswers = [];
-
-// =====================================
-// STEP 9C: TIMER VARIABLES
-// =====================================
-let quizTimeLimit = 0;
-let timeRemaining = 0;
-let timerInterval = null;
-
-
-// =====================================
-// SHUFFLE QUESTIONS
-// =====================================
-
-function shuffleQuestions(questionArray) {
-
-const shuffled = [...questionArray];
-
-for (let i = shuffled.length - 1; i > 0; i--) {
-
-const randomIndex =
-Math.floor(Math.random() * (i + 1));
-
-[
-shuffled[i],
-shuffled[randomIndex]
-] = [
-shuffled[randomIndex],
-shuffled[i]
-];
-
-}
-
-return shuffled;
-
-}
-
-
-// =====================================
-// START QUIZ
-// =====================================
-
-function startQuiz() {
-
-const topic =
-document.getElementById("topic").value;
-
-currentSubject =
-document.getElementById("subject").value;
-
-currentTopic = topic;
-
-wrongAnswers = [];
-
-
-// =====================================
-// GET QUESTIONS FOR SELECTED TOPIC
-// =====================================
-
-const topicQuestions =
-quizQuestions[topic];
-
-if (!topicQuestions || topicQuestions.length === 0) {
-
-alert(
-"No questions available for this topic yet."
-);
-
-return;
-
-}
-
-
-// =====================================
-// GET SELECTED DIFFICULTY
-// =====================================
-
-const difficulty =
-document.getElementById("difficulty").value;
-
-// STEP 9C: GET SELECTED TIME LIMIT
-quizTimeLimit = Number(document.getElementById("timeLimit").value);
-
-// RESET TIMER
-clearInterval(timerInterval);
-timerInterval = null;
-timeRemaining = quizTimeLimit;
-
-// =====================================
-// FILTER QUESTIONS BY DIFFICULTY
-// =====================================
-
-if (difficulty === "mixed") {
-
-questions =
-[...topicQuestions];
-
-}
-
-else {
-
-questions =
-topicQuestions.filter(function(question) {
-
-return question.difficulty === difficulty;
-
-});
-
-}
-
-
-// =====================================
-// CHECK AVAILABLE QUESTIONS
-// =====================================
-
-if (questions.length === 0) {
-
-alert(
-"No " +
-difficulty +
-" questions are available for this topic yet."
-);
-
-return;
-
-}
-
-
-// =====================================
-// STEP 6A:
-// RANDOMIZE QUESTION ORDER
-// =====================================
-
-questions =
-shuffleQuestions(questions);
-
-
-// =====================================
-// RESET QUIZ
-// =====================================
-
-currentQuestion = 0;
-
-score = 0;
-
-answered = false;
-
-
-// =====================================
-// SHOW QUIZ
-// =====================================
-
-document.getElementById("quizArea").style.display =
-"block";
-
-document.getElementById("resultArea").style.display =
-"none";
-
-
-document.getElementById("quizArea").scrollIntoView({
-
-behavior: "smooth"
-
-});
-
-
-showQuestion();
-
-}
-
-// STEP 9D : START COUNTDOWN TIMER 
-
-start timer();
-}
-
-// =====================================
-// STEP 9D: COUNTDOWN TIMER
-// =====================================
-
-function startTimer() {
-
-if (quizTimeLimit <= 0) {
-document.getElementById("quizTimer").style.display = "none";
-return;
-}
-
-document.getElementById("quizTimer").style.display = "block";
-
-updateTimerDisplay();
-
-timerInterval = setInterval(function() {
-
-timeRemaining--;
-
-updateTimerDisplay();
-
-if (timeRemaining <= 0) {
-clearInterval(timerInterval);
-timerInterval = null;
-timeUp();
-}
-
-}, 1000);
-}
-
-// =====================================
-// STEP 9E: TIME UP
-// =====================================
-function timeUp() {
-
-clearInterval(timerInterval);
-timerInterval = null;
-
-answered = true;
-
-document.getElementById("quizTimer").style.display = "none";
-
-document.getElementById("feedback").textContent =
-"⏰ Time's up! Your quiz has ended.";
-
-const buttons = document.getElementById("options").children;
-
-for (let i = 0; i < buttons.length; i++) {
-buttons[i].disabled = true;
-}
-
-document.getElementById("nextButton").style.display = "none";
-
-setTimeout(function() {
-showResult();
-}, 1000);
-}
-
-
-// =====================================
-// UPDATE TIMER DISPLAY
-// =====================================
-function updateTimerDisplay() {
-
-const minutes = Math.floor(timeRemaining / 60);
-const seconds = timeRemaining % 60;
-
-const formattedMinutes = String(minutes).padStart(2, "0");
-const formattedSeconds = String(seconds).padStart(2, "0");
-
-document.getElementById("timerDisplay").textContent =
-formattedMinutes + ":" + formattedSeconds;
-}
-
-// =====================================
-// SHOW QUESTION
-// =====================================
-
-function showQuestion() {
-
-const questionData =
-questions[currentQuestion];
-
-document.getElementById("quizProgress").textContent =
-"Question " +
-(currentQuestion + 1) +
-" of " +
-questions.length;
-
-document.getElementById("question").textContent =
-questionData.question;
-
-const optionsContainer =
-document.getElementById("options");
-
-optionsContainer.innerHTML = "";
-
-document.getElementById("feedback").textContent =
-"";
-
-document.getElementById("nextButton").style.display =
-"none";
-
-answered = false;
-
-
-// =====================================
-// SHUFFLE ANSWER OPTIONS
-// =====================================
-
-questionData.shuffledOptions =
-questionData.options.map(function(option, index) {
-
-return {
-
-text: option,
-
-originalIndex: index
-
-};
-
-});
-
-
-for (
-let i = questionData.shuffledOptions.length - 1;
-i > 0;
-i--
-) {
-
-const randomIndex =
-Math.floor(Math.random() * (i + 1));
-
-[
-questionData.shuffledOptions[i],
-questionData.shuffledOptions[randomIndex]
-] = [
-questionData.shuffledOptions[randomIndex],
-questionData.shuffledOptions[i]
-];
-
-}
-
-
-// =====================================
-// DISPLAY OPTIONS
-// =====================================
-
-questionData.shuffledOptions.forEach(
-function(option, index) {
-
-const button =
-document.createElement("button");
-
-button.textContent =
-option.text;
-
-button.style.display =
-"block";
-
-button.style.width =
-"100%";
-
-button.style.margin =
-"10px 0";
-
-button.onclick = function() {
-
-selectAnswer(index);
-
-};
-
-optionsContainer.appendChild(button);
-
-}
-
-);
-
-}
-
-
-// =====================================
-// SELECT ANSWER
-// =====================================
-
-function selectAnswer(selectedIndex) {
-
-if (answered) {
-
-return;
-
-}
-
-answered = true;
-
-const questionData =
-questions[currentQuestion];
-
-const buttons =
-document.getElementById("options").children;
-
-const selectedOption =
-questionData.shuffledOptions[selectedIndex];
-
-const correctOption =
-questionData.shuffledOptions.find(function(option) {
-
-return option.originalIndex ===
-questionData.answer;
-
-});
-
-
-if (
-selectedOption.originalIndex ===
-questionData.answer
-) {
-
-score++;
-
-document.getElementById("feedback").textContent =
-"✅ Correct! " +
-questionData.explanation;
-
-}
-
-else {
-
-document.getElementById("feedback").textContent =
-"❌ Not quite. " +
-questionData.explanation;
-
-wrongAnswers.push({
-
-question:
-questionData.question,
-
-selectedAnswer:
-selectedOption.text,
-
-correctAnswer:
-correctOption.text,
-
-explanation:
-questionData.explanation
-
-});
-
-}
-
-
-for (let i = 0; i < buttons.length; i++) {
-
-buttons[i].disabled = true;
-
-}
-
-document.getElementById("nextButton").style.display =
-"block";
-
-}
-
-
-// =====================================
-// NEXT QUESTION
-// =====================================
-
-function nextQuestion() {
-
-currentQuestion++;
-
-if (currentQuestion < questions.length) {
-
-showQuestion();
-
-}
-
-else {
-
-showResult();
-
-}
-
-}
-
-
-// =====================================
-// SHOW RESULT
-// =====================================
-
-function showResult() {
-
-document.getElementById("quizArea").style.display =
-"none";
-
-document.getElementById("resultArea").style.display =
-"block";
-
-
-const percentage =
-Math.round(
-(score / questions.length) * 100
-);
-
-
-document.getElementById("score").textContent =
-"Score: " +
-score +
-" / " +
-questions.length;
-
-
-document.getElementById("accuracy").textContent =
-"Accuracy: " +
-percentage +
-"%";
-
-
-let message = "";
-
-
-if (percentage >= 80) {
-
-message =
-"🟢 Excellent! You have a strong understanding of this topic.";
-
-}
-
-else if (percentage >= 60) {
-
-message =
-"🟡 Good progress! A little more revision can strengthen this topic.";
-
-}
-
-else {
-
-message =
-"🔴 This topic needs more revision. Keep practicing — you can improve.";
-
-}
-
-
-document.getElementById("resultMessage").textContent =
-message;
-
-
-saveQuizResult();
-
-
-document.getElementById("resultArea").scrollIntoView({
-
-behavior: "smooth"
-
-});
-
-}
-
-
-// =====================================
-// SAVE QUIZ RESULT
-// =====================================
-
-function saveQuizResult() {
-
-const results =
-JSON.parse(
-localStorage.getItem("quizResults")
-) || [];
-
-
-const percentage =
-Math.round(
-(score / questions.length) * 100
-);
-
-
-const attempts =
-results.filter(function(result) {
-
-return result.topic === currentTopic;
-
-}).length + 1;
-
-
-const quizResult = {
-subject: currentSubject,
-topic: currentTopic,
-difficulty: document.getElementById("difficulty").value,
-score: score,
-total: questions.length,
-accuracy: percentage,
-
-wrongAnswers:
-wrongAnswers,
-
-attempt:
-attempts,
-
-date:
-new Date().toISOString()
-
-};
-
-
-results.push(quizResult);
-
-
-localStorage.setItem(
-"quizResults",
-JSON.stringify(results)
-);
-
-load analytics();
-
-}
-
-
-// =====================================
-// LOAD QUIZ HISTORY
-// =====================================
-
-function loadQuizHistory() {
-
-const history =
-document.getElementById("quizHistory");
-
-
-const results =
-JSON.parse(
-localStorage.getItem("quizResults")
-) || [];
-
-
-if (results.length === 0) {
-
-history.textContent =
-"No quiz attempts yet.";
-
-return;
-
-}
-
-
-history.innerHTML = "";
-
-
-results
-.slice()
-.reverse()
-.forEach(function(result) {
-
-const item =
-document.createElement("div");
-
-
-item.style.margin =
-"15px 0";
-
-
-item.style.padding =
-"12px";
-
-
-item.style.borderRadius =
-"10px";
-
-
-item.style.background =
-"rgba(255,255,255,0.05)";
-
-
-item.textContent =
-result.subject +
-" • " +
-result.topic +
-" • Score: " +
-result.score +
-"/" +
-result.total +
-" • Accuracy: " +
-result.accuracy +
-"% • Attempt " +
-result.attempt;
-
-
-history.appendChild(item);
-
-});
-
-}
-
-// =====================================
-// STEP 10C: ANALYTICS BREAKDOWN
-// =====================================
-
-function loadAnalytics() {
-
-const results =
-JSON.parse(localStorage.getItem("quizResults")) || [];
-
-const summary =
-document.getElementById("analyticsSummary");
-
-const stats =
-document.getElementById("analyticsStats");
-
-
-if (results.length === 0) {
-
-summary.textContent =
-"Complete quizzes to see your performance analytics.";
-
-stats.innerHTML = "";
-
-return;
-
-}
-
-
-// =====================================
-// OVERALL STATISTICS
-// =====================================
-
-const totalQuizzes =
-results.length;
-
-
-const totalQuestions =
-results.reduce(function(total, result) {
-
-return total + Number(result.total || 0);
-
-}, 0);
-
-
-const totalAccuracy =
-results.reduce(function(total, result) {
-
-return total + Number(result.accuracy || 0);
-
-}, 0);
-
-
-const averageAccuracy =
-Math.round(totalAccuracy / totalQuizzes);
-
-
-const bestAccuracy =
-Math.max.apply(
-null,
-results.map(function(result) {
-
-return Number(result.accuracy || 0);
-
-})
-);
-
-
-// =====================================
-// TOPIC PERFORMANCE
-// =====================================
-
-const topicData = {};
-
-
-results.forEach(function(result) {
-
-const topic =
-result.topic || "Unknown";
-
-
-if (!topicData[topic]) {
-
-topicData[topic] = {
-attempts: 0,
-accuracy: 0
-};
-
-}
-
-
-topicData[topic].attempts++;
-
-topicData[topic].accuracy +=
-Number(result.accuracy || 0);
-
-});
-
-
-let topicHTML = "";
-
-
-Object.keys(topicData).forEach(function(topic) {
-
-const average =
-Math.round(
-topicData[topic].accuracy /
-topicData[topic].attempts
-);
-
-
-topicHTML += `
-
-<div class="analytics-row">
-
-<div>
-
-<strong>
-${topic}
-</strong>
-
-<div class="analytics-bar">
-
-<div
-class="analytics-bar-fill"
-style="width:${average}%"
-></div>
-
-</div>
-
-</div>
-
-<span>
-${average}%
-</span>
-
-</div>
-
-`;
-
-});
-
-
-// =====================================
-// DIFFICULTY PERFORMANCE
-// =====================================
-
-const difficultyData = {};
-
-
-results.forEach(function(result) {
-
-const difficulty =
-result.difficulty || "mixed";
-
-
-if (!difficultyData[difficulty]) {
-
-difficultyData[difficulty] = {
-attempts: 0,
-accuracy: 0
-};
-
-}
-
-
-difficultyData[difficulty].attempts++;
-
-difficultyData[difficulty].accuracy +=
-Number(result.accuracy || 0);
-
-});
-
-
-let difficultyHTML = "";
-
-
-Object.keys(difficultyData).forEach(function(difficulty) {
-
-const average =
-Math.round(
-difficultyData[difficulty].accuracy /
-difficultyData[difficulty].attempts
-);
-
-
-const difficultyName =
-difficulty.charAt(0).toUpperCase() +
-difficulty.slice(1);
-
-
-difficultyHTML += `
-
-<div class="analytics-row">
-
-<div>
-
-<strong>
-${difficultyName}
-</strong>
-
-<div class="analytics-bar">
-
-<div
-class="analytics-bar-fill"
-style="width:${average}%"
-></div>
-
-</div>
-
-</div>
-
-<span>
-${average}%
-</span>
-
-</div>
-
-`;
-
-});
-
-
-// =====================================
-// DISPLAY ANALYTICS
-// =====================================
-
-summary.textContent =
-"You have completed " +
-totalQuizzes +
-" quiz" +
-(totalQuizzes === 1 ? "" : "zes") +
-" so far.";
-
-
-stats.innerHTML = `
-
-<div class="analytics-grid">
-
-
-<div class="analytics-card">
-
-<h3>📝 Total Quizzes</h3>
-
-<p>${totalQuizzes}</p>
-
-</div>
-
-
-<div class="analytics-card">
-
-<h3>📊 Average Accuracy</h3>
-
-<p>${averageAccuracy}%</p>
-
-</div>
-
-
-<div class="analytics-card">
-
-<h3>🏆 Best Accuracy</h3>
-
-<p>${bestAccuracy}%</p>
-
-</div>
-
-
-<div class="analytics-card">
-
-<h3>❓ Questions Answered</h3>
-
-<p>${totalQuestions}</p>
-
-</div>
-
-
-</div>
-
-
-<div class="analytics-breakdown">
-
-<h3>📚 Performance by Topic</h3>
-
-${topicHTML}
-
-</div>
-
-
-<div class="analytics-breakdown">
-
-<h3>🎯 Performance by Difficulty</h3>
-
-${difficultyHTML}
-
-</div>
-
-`;
-
-}
-
-// =====================================
-// CLEAR QUIZ HISTORY
-// =====================================
-
-function clearQuizHistory() {
-
-if (confirm("Clear all quiz history?")) {
-
-localStorage.removeItem("quizResults");
-
-loadQuizHistory();
-
-}
-
-}
-
-
-// =====================================
-// LOAD HISTORY WHEN PAGE OPENS
-// =====================================
-
-loadQuizHistory();
-
-loadAnalytics();
-
-loadknowledgeGaps();
-
-loadMasteryDashboard();
-
-// =====================================
-// STEP 11B: INDIVIDUAL WRONG ANSWERS
-// =====================================
-
-function loadKnowledgeGaps() {
-
-const results =
-JSON.parse(localStorage.getItem("quizResults")) || [];
-
-const summary =
-document.getElementById("knowledgeGapSummary");
-
-const stats =
-document.getElementById("knowledgeGapStats");
-
-const diagnosis = 
-document.getElementById("knowledgeGapDiagnosis");
-
-const weakQuestions =
-document.getElementById("weakQuestionStats");
-
-const revisionList = 
-document.getlementById("revisionList");
-
-
-if (!results.length) {
-
-summary.textContent =
-"Complete quizzes to discover topics that need more revision.";
-
-stats.innerHTML = "";
-weakQuestions.innerHTML = "";
-
-return;
-
-}
-
-
-// =====================================
-// TOPIC ANALYSIS
-// =====================================
-
-const topicData = {};
-
-
-results.forEach(function(result) {
-
-const topic =
-result.topic || "Unknown";
-
-const accuracy =
-Number(result.accuracy || 0);
-
-
-if (!topicData[topic]) {
-
-topicData[topic] = {
-attempts: 0,
-accuracy: 0
-};
-
-}
-
-
-topicData[topic].attempts++;
-
-topicData[topic].accuracy += accuracy;
-
-});
-
-
-const weakTopics = [];
-
-let weakest topic = null;
-
-
-Object.keys(topicData).forEach(function(topic) {
-
-const average =
-Math.round(
-topicData[topic].accuracy /
-topicData[topic].attempts
-);
-
-
-if (average < 60) {
-
-weakTopics.push({
-topic: topic,
-accuracy: average
-});
-
-}
-
-});
-
-if (weakTopics.length > 0) {
-
-weakestTopic =
-weakTopics.reduce(function(lowest, current) {
-
-return current.accuracy < lowest.accuracy
-? current
-: lowest;
-
-});
-
-diagnosis.innerHTML = `
-
-<div class="analytics-card">
-
-<h3>
-⚠️ Needs Attention
-</h3>
-
-<p>
-<strong>${weakestTopic.topic}</strong>
-</p>
-
-<p>
-Your current accuracy is
-<strong>${weakestTopic.accuracy}%</strong>.
-</p>
-
-<p>
-Focus on this topic during your next revision session.
-</p>
-
-</div>
-
-`;
-
-} else {
-
-diagnosis.innerHTML = `
-
-<div class="analytics-card">
-
-<h3>
-🎉 Looking Good!
-</h3>
-
-<p>
-No major topic-level weakness detected yet.
-Keep practicing consistently.
-</p>
-
-</div>
-
-`;
-
-}
-
-if (weakTopics.length === 0) {
-
-summary.textContent =
-"No major knowledge gaps detected yet. Keep practicing! 🎉";
-
-stats.innerHTML = "";
-
-} else {
-
-summary.textContent =
-"These topics may need additional revision:";
-
-
-let gapHTML = "";
-
-
-weakTopics.forEach(function(item) {
-
-gapHTML += `
-
-<div class="analytics-row">
-
-<div>
-
-<strong>
-${item.topic}
-</strong>
-
-<div class="analytics-bar">
-
-<div
-class="analytics-bar-fill"
-style="width:${item.accuracy}%"
-></div>
-
-</div>
-
-</div>
-
-<span>
-${item.accuracy}%
-</span>
-
-</div>
-
-`;
-
-});
-
-
-stats.innerHTML = gapHTML;
-
-}
-
-
-// =====================================
-// INDIVIDUAL WRONG ANSWER ANALYSIS
-// =====================================
-
-const wrongAnswerData = {};
-
-
-results.forEach(function(result) {
-
-if (!result.wrongAnswers) {
-return;
-}
-
-
-result.wrongAnswers.forEach(function(item) {
-
-const question =
-item.question || "Unknown Question";
-
-
-if (!wrongAnswerData[question]) {
-
-wrongAnswerData[question] = {
-count: 0,
-correctAnswer: item.correctAnswer || "",
-explanation: item.explanation || ""
-};
-
-}
-
-
-wrongAnswerData[question].count++;
-
-});
-
-});
-
-
-// =====================================
-// FIND REPEATED MISTAKES
-// =====================================
-
-const repeatedMistakes =
-Object.keys(wrongAnswerData)
-.filter(function(question) {
-
-return wrongAnswerData[question].count >= 2;
-
-})
-.sort(function(a, b) {
-
-return wrongAnswerData[b].count -
-wrongAnswerData[a].count;
-
-});
-
-
-if (repeatedMistakes.length === 0) {
-
-weakQuestions.innerHTML = `
-
-<p>
-🎉 No repeated mistakes detected yet.
-</p>
-
-`;
-revisionList.innerHTML="";
-
-return;
-
-}
-
-
-// =====================================
-// DISPLAY REPEATED MISTAKES
-// =====================================
-
-let questionHTML = `
-
-<h3>
-⚠️ Repeated Mistakes
-</h3>
-
-<p>
-These questions have been answered incorrectly multiple times.
-</p>
-
-`;
-
-
-repeatedMistakes.forEach(function(question) {
-
-const data =
-wrongAnswerData[question];
-
-
-questionHTML += `
-
-<div class="analytics-row">
-
-<div>
-
-<strong>
-${question}
-</strong>
-
-<p>
-❌ Incorrect attempts:
-${data.count}
-</p>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-
-weakQuestions.innerHTML =
-questionHTML;
-
-revisionList.innerHTML = `
-
-<h3>
-📖 Revision List
-</h3>
-
-<p>
-Focus your next revision session on these repeated mistakes.
-</p>
-
-${repeatedMistakes.map(function(question) {
-
-return `
-
-<div class="analytics-row">
-
-<div>
-
-<strong>
-${question}
-</strong>
-
-</div>
-
-</div>
-
-`;
-
-}).join("")}
-
-`;
-
-}
-
-// =====================================
-// STEP 12A: TOPIC MASTERY
-// =====================================
-
-function loadMasteryDashboard() {
-
-const results =
-JSON.parse(localStorage.getItem("quizResults")) || [];
-
-const summary =
-document.getElementById("masterySummary");
-
-const stats =
-document.getElementById("masteryStats");
-
-
-if (results.length === 0) {
-
-summary.textContent =
-"Complete quizzes to build your topic mastery.";
-
-stats.innerHTML = "";
-
-return;
-
-}
-
-
-const topicData = {};
-
-
-results.forEach(function(result) {
-
-const topic =
-result.topic || "Unknown";
-
-const accuracy =
-Number(result.accuracy || 0);
-
-
-if (!topicData[topic]) {
-
-topicData[topic] = {
-attempts: 0,
-accuracy: 0
-};
-
-}
-
-
-topicData[topic].attempts++;
-
-topicData[topic].accuracy += accuracy;
-
-});
-
-
-let masteryHTML = "";
-
-
-Object.keys(topicData).forEach(function(topic) {
-
-const average =
-Math.round(
-topicData[topic].accuracy /
-topicData[topic].attempts
-);
-
-
-let level = "";
-let icon = "";
-
-
-if (average >= 80) {
-
-level = "Mastered";
-icon = "🟢";
-
-} else if (average >= 60) {
-
-level = "Developing";
-icon = "🟡";
-
-} else {
-
-level = "Needs Revision";
-icon = "🔴";
-
-}
-
-
-masteryHTML += `
-
-<div class="analytics-row">
-
-<div>
-
-<strong>
-${icon} ${topic}
-</strong>
-
-<div class="analytics-bar">
-
-<div
-class="analytics-bar-fill"
-style="width:${average}%"
-></div>
-
-</div>
-
-</div>
-
-<span>
-${level}
-</span>
-
-</div>
-
-`;
-
-});
-
-
-summary.textContent =
-"Your current mastery is based on your quiz performance.";
-
-
-stats.innerHTML =
-masteryHTML;
-
-}
+      {
+        question: "If the mean of 5 numbers is 20, what is their total?",
+        options: ["25", "50", "75", "100"],
+        answer: 3,
+        difficulty: "easy"
+      },
+      {
+        question: "What is the median of 3, 7, 9, 11, 15?",
+        options: ["7", "9", "11", "15"],
+        answer: 1,
+        difficulty: "easy"
+      },
+      {
+        question: "If x + 5 = 12, then x = ?",
+        options: ["5", "6", "7", "8"],
+        answer: 2,
+        difficulty: "easy"
+      },
+
+      {
+        question: "If the ratio of A:B is 3:5 and A = 24, what is B?",
+        options: ["30", "35", "40", "45"],
+        answer: 2,
+        difficulty: "medium"
+      },
+      {
+        question: "A number increased by 20% becomes 240. What was the original number?",
+        options: ["180", "200", "210", "220"],
+        answer: 1,
+        difficulty: "medium"
+      },
+      {
+        question: "If the simple interest on ₹5,000 for 2 years is ₹800, what is the annual rate?",
+        options: ["6%", "7%", "8%", "10%"],
+        answer: 2,
+        difficulty: "medium"
+      },
+      {
+        question: "If two numbers are in the ratio 4:7 and their sum is 99, what is the smaller number?",
+        options: ["32", "36", "40", "44"],
+        answer: 1,
+        difficulty: "medium"
+      },
+      {
+        question: "The probability of an event is 0.25. What is the probability that the event does not occur?",
+        options: ["0.25", "0.50", "0.75", "1.25"],
+        answer: 2,
+        difficulty: "medium"
+      },
+
+      {
+        question: "If the compound interest exceeds simple interest by ₹64 over 2 years at 8% p.a., what is the principal?",
+        options: ["₹8,000", "₹9,000", "₹10,000", "₹12,000"],
+        answer: 2,
+        difficulty: "hard"
+      },
+      {
+        question: "If the coefficient of variation is 20% and the mean is 50, what is the standard deviation?",
+        options: ["5", "10", "15", "20"],
+        answer: 1,
+        difficulty: "hard"
+      }
+      // =====================================================
+      // QUESTION DATABASE ENDS HERE
+      // =====================================================
+    }
+  };
+
+  // =========================================
+  // QUIZ VARIABLES
+  // =========================================
+
+  let currentQuestions = [];
+  let currentQuestionIndex = 0;
+  let score = 0;
+  let answered = false;
+  let wrongAnswers = [];
+
+  // =========================================
+  // TIMER VARIABLES
+  // =========================================
+
+  let timerInterval = null;
+  let timeRemaining = 0;
+  let selectedTimeLimit = 0;
+
+  // Prevent duplicate result saving
+  let quizFinished = false;
+
+  // =========================================
+  // SHUFFLE QUESTIONS
+  // =========================================
+
+  function shuffleQuestions(array) {
+    const shuffled = [...array];
+
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    return shuffled;
+  }
+
+ // =========================================
+  // START QUIZ
+  // =========================================
+
+  function startQuiz() {
+    const subject = document.getElementById("subject").value;
+    const topic = document.getElementById("topic").value;
+    const difficulty = document.getElementById("difficulty").value;
+    selectedTimeLimit = parseInt(
+      document.getElementById("timeLimit").value
+    ) || 0;
+
+    // Reset quiz state
+    currentQuestionIndex = 0;
+    score = 0;
+    answered = false;
+    wrongAnswers = [];
+    quizFinished = false;
+
+    // Clear any previous timer
+    if (timerInterval) {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+
+    // Get questions for selected topic
+    let questions = questionDatabase[topic] || [];
+
+    // Filter by difficulty
+    if (difficulty !== "mixed") {
+      questions = questions.filter(
+        question => question.difficulty === difficulty
+      );
+    }
+
+    // Safety check
+    if (questions.length === 0) {
+      alert("No questions available for this selection.");
+      return;
+    }
+
+    // Randomize question order
+    currentQuestions = shuffleQuestions(questions);
+
+    // Reset timer
+    timeRemaining = selectedTimeLimit;
+
+    // Show quiz area
+    document.getElementById("setupArea").style.display = "none";
+    document.getElementById("quizArea").style.display = "block";
+    document.getElementById("resultArea").style.display = "none";
+
+    // Reset timer display
+    const timerContainer = document.getElementById("quizTimer");
+
+    if (selectedTimeLimit > 0) {
+      timerContainer.style.display = "block";
+      updateTimerDisplay();
+    } else {
+      timerContainer.style.display = "none";
+    }
+
+    // Show first question
+    showQuestion();
+
+    // Start countdown
+    startTimer();
+  }
+
+  // =========================================
+  // START TIMER
+  // =========================================
+
+  function startTimer() {
+    // No timer selected
+    if (selectedTimeLimit <= 0) {
+      return;
+    }
+
+    // Clear previous timer if any
+    if (timerInterval) {
+      clearInterval(timerInterval);
+    }
+
+    timerInterval = setInterval(() => {
+      timeRemaining--;
+
+      updateTimerDisplay();
+
+      if (timeRemaining <= 0) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        timeUp();
+      }
+    }, 1000);
+  }
+
+  // =========================================
+  // UPDATE TIMER DISPLAY
+  // =========================================
+
+  function updateTimerDisplay() {
+    const timerDisplay = document.getElementById("timerDisplay");
+
+    if (!timerDisplay) {
+      return;
+    }
+
+    const minutes = Math.floor(timeRemaining / 60);
+    const seconds = timeRemaining % 60;
+
+    timerDisplay.textContent =
+      `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+  }
+
+  // =========================================
+  // TIME UP
+  // =========================================
+
+  function timeUp() {
+    // Prevent duplicate result handling
+    if (quizFinished) {
+      return;
+    }
+
+    answered = true;
+
+    // Disable all option buttons
+    const optionButtons = document.querySelectorAll("#options button");
+
+    optionButtons.forEach(button => {
+      button.disabled = true;
+    });
+
+    const feedback = document.getElementById("feedback");
+
+    if (feedback) {
+      feedback.textContent =
+        "⏰ Time's up! Your quiz has ended.";
+    }
+
+    const nextButton = document.getElementById("nextButton");
+
+    if (nextButton) {
+      nextButton.style.display = "none";
+    }
+
+    // Give the feedback a moment before showing results
+    setTimeout(() => {
+      if (!quizFinished) {
+        showResult();
+      }
+    }, 800);
+  }
+
+  // =========================================
+  // SHOW QUESTION
+  // =========================================
+
+  function showQuestion() {
+    if (
+      !currentQuestions ||
+      currentQuestions.length === 0 ||
+      currentQuestionIndex >= currentQuestions.length
+    ) {
+      showResult();
+      return;
+    }
+
+    answered = false;
+
+    const questionData =
+      currentQuestions[currentQuestionIndex];
+
+    const questionElement =
+      document.getElementById("question");
+
+    const optionsElement =
+      document.getElementById("options");
+
+    const feedbackElement =
+      document.getElementById("feedback");
+
+    const nextButton =
+      document.getElementById("nextButton");
+
+    // Progress
+    document.getElementById("quizProgress").textContent =
+      `Question ${currentQuestionIndex + 1} of ${currentQuestions.length}`;
+
+    // Question text
+    questionElement.textContent =
+      questionData.question;
+
+    // Clear previous options
+    optionsElement.innerHTML = "";
+
+    // Clear feedback
+    feedbackElement.textContent = "";
+
+    // Hide next button
+    nextButton.style.display = "none";
+
+    // Randomize answer options
+    const shuffledOptions = questionData.options
+      .map((option, index) => ({
+        text: option,
+        originalIndex: index
+      }))
+      .sort(() => Math.random() - 0.5);
+
+    questionData.shuffledOptions = shuffledOptions;
+
+    // Create option buttons
+    shuffledOptions.forEach(option => {
+      const button = document.createElement("button");
+
+      button.type = "button";
+      button.textContent = option.text;
+
+      button.onclick = () => {
+        selectAnswer(option.originalIndex, button);
+      };
+
+      optionsElement.appendChild(button);
+    });
+  }
+
+  // =========================================
+  // SELECT ANSWER
+  // =========================================
+
+  function selectAnswer(selectedIndex, selectedButton) {
+    if (answered || quizFinished) {
+      return;
+    }
+
+    const questionData =
+      currentQuestions[currentQuestionIndex];
+
+    if (!questionData) {
+      return;
+    }
+
+    answered = true;
+
+    // Disable all options
+    const optionButtons =
+      document.querySelectorAll("#options button");
+
+    optionButtons.forEach(button => {
+      button.disabled = true;
+    });
+
+    const feedback =
+      document.getElementById("feedback");
+
+    // Correct answer
+    if (selectedIndex === questionData.answer) {
+      score++;
+
+      selectedButton.classList.add("correct");
+
+      feedback.textContent =
+        "✅ Correct! Great job.";
+    }
+
+    // Wrong answer
+    else {
+      selectedButton.classList.add("wrong");
+
+      feedback.textContent =
+        `❌ Incorrect. Correct answer: ${questionData.options[questionData.answer]}`;
+
+      wrongAnswers.push({
+        question: questionData.question,
+        selectedAnswer: questionData.options[selectedIndex],
+        correctAnswer: questionData.options[questionData.answer],
+        topic: document.getElementById("topic").value,
+        difficulty: questionData.difficulty
+      });
+    }
+
+    // Show correct answer visually
+    optionButtons.forEach(button => {
+      const buttonText = button.textContent;
+
+      if (
+        buttonText ===
+        questionData.options[questionData.answer]
+      ) {
+        button.classList.add("correct");
+      }
+    });
+
+    // Show next button
+    const nextButton =
+      document.getElementById("nextButton");
+
+    nextButton.style.display = "block";
+  }
+// =========================================
+  // NEXT QUESTION
+  // =========================================
+
+  function nextQuestion() {
+    if (quizFinished) {
+      return;
+    }
+
+    currentQuestionIndex++;
+
+    if (currentQuestionIndex >= currentQuestions.length) {
+      showResult();
+      return;
+    }
+
+    showQuestion();
+  }
+
+  // =========================================
+  // SHOW RESULT
+  // =========================================
+
+  function showResult() {
+    // Prevent duplicate result saving
+    if (quizFinished) {
+      return;
+    }
+
+    quizFinished = true;
+
+    // Stop timer
+    if (timerInterval) {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+
+    const timerContainer =
+      document.getElementById("quizTimer");
+
+    if (timerContainer) {
+      timerContainer.style.display = "none";
+    }
+
+    // Hide quiz
+    document.getElementById("quizArea").style.display = "none";
+
+    // Show result
+    document.getElementById("resultArea").style.display = "block";
+
+    // Calculate accuracy
+    const total = currentQuestions.length;
+
+    const accuracy = total > 0
+      ? Math.round((score / total) * 100)
+      : 0;
+
+    // Update result values
+    document.getElementById("score").textContent =
+      `${score} / ${total}`;
+
+    document.getElementById("accuracy").textContent =
+      `${accuracy}%`;
+
+    // Result message
+    let message = "";
+
+    if (accuracy >= 90) {
+      message = "🔥 Excellent! You have mastered this topic.";
+    } else if (accuracy >= 75) {
+      message = "👏 Very good! Keep practicing to become stronger.";
+    } else if (accuracy >= 50) {
+      message = "📚 Good attempt! A little more revision will help.";
+    } else {
+      message = "💪 Don't worry! Revise the weak areas and try again.";
+    }
+
+    document.getElementById("resultMessage").textContent =
+      message;
+
+    // Save result
+    saveQuizResult();
+
+    // Scroll to result
+    document.getElementById("resultArea").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+
+  // =========================================
+  // SAVE QUIZ RESULT
+  // =========================================
+
+  function saveQuizResult() {
+    const historyKey = "quizHistory";
+
+    let history = [];
+
+    try {
+      const storedHistory =
+        localStorage.getItem(historyKey);
+
+      history = storedHistory
+        ? JSON.parse(storedHistory)
+        : [];
+
+      if (!Array.isArray(history)) {
+        history = [];
+      }
+    } catch (error) {
+      console.error(
+        "Unable to read quiz history:",
+        error
+      );
+
+      history = [];
+    }
+
+    const total = currentQuestions.length;
+
+    const accuracy = total > 0
+      ? Math.round((score / total) * 100)
+      : 0;
+
+    const subject =
+      document.getElementById("subject").value;
+
+    const topic =
+      document.getElementById("topic").value;
+
+    const difficulty =
+      document.getElementById("difficulty").value;
+
+    const result = {
+      subject: subject,
+      topic: topic,
+      difficulty: difficulty,
+      score: score,
+      total: total,
+      accuracy: accuracy,
+      wrongAnswers: [...wrongAnswers],
+      attempt: history.length + 1,
+      date: new Date().toISOString()
+    };
+
+    history.push(result);
+
+    try {
+      localStorage.setItem(
+        historyKey,
+        JSON.stringify(history)
+      );
+    } catch (error) {
+      console.error(
+        "Unable to save quiz history:",
+        error
+      );
+    }
+
+    // Refresh all connected sections
+    loadQuizHistory();
+    loadAnalytics();
+    loadKnowledgeGaps();
+    loadMasteryDashboard();
+  }
+
+  // =========================================
+  // LOAD QUIZ HISTORY
+  // =========================================
+
+  function loadQuizHistory() {
+    const historyContainer =
+      document.getElementById("quizHistory");
+
+    if (!historyContainer) {
+      return;
+    }
+
+    let history = [];
+
+    try {
+      const storedHistory =
+        localStorage.getItem("quizHistory");
+
+      history = storedHistory
+        ? JSON.parse(storedHistory)
+        : [];
+
+      if (!Array.isArray(history)) {
+        history = [];
+      }
+    } catch (error) {
+      console.error(
+        "Unable to load quiz history:",
+        error
+      );
+
+      history = [];
+    }
+
+    // No history
+    if (history.length === 0) {
+      historyContainer.innerHTML =
+        "<p>No quiz attempts yet.</p>";
+      return;
+    }
+
+    // Show newest first
+    const reversedHistory = [...history].reverse();
+
+    historyContainer.innerHTML =
+      reversedHistory.map((result, index) => {
+
+        const date = result.date
+          ? new Date(result.date).toLocaleString()
+          : "Unknown date";
+
+        const scoreValue =
+          typeof result.score === "number"
+            ? result.score
+            : 0;
+
+        const totalValue =
+          typeof result.total === "number"
+            ? result.total
+            : 0;
+
+        const accuracyValue =
+          typeof result.accuracy === "number"
+            ? result.accuracy
+            : (
+                totalValue > 0
+                  ? Math.round(
+                      (scoreValue / totalValue) * 100
+                    )
+                  : 0
+              );
+
+        return `
+          <div class="quiz-history-item">
+            <strong>Attempt ${history.length - index}</strong>
+            <p>
+              ${result.topic || "Unknown Topic"}
+              • ${result.difficulty || "mixed"}
+            </p>
+            <p>
+              Score: ${scoreValue}/${totalValue}
+              • Accuracy: ${accuracyValue}%
+            </p>
+            <small>${date}</small>
+          </div>
+        `;
+      }).join("");
+  }
+
+  // =========================================
+  // LOAD ANALYTICS
+  // =========================================
+
+  function loadAnalytics() {
+    const summaryElement =
+      document.getElementById("analyticsSummary");
+
+    const statsElement =
+      document.getElementById("analyticsStats");
+
+    if (!summaryElement || !statsElement) {
+      return;
+    }
+
+    let history = [];
+
+    try {
+      const storedHistory =
+        localStorage.getItem("quizHistory");
+
+      history = storedHistory
+        ? JSON.parse(storedHistory)
+        : [];
+
+      if (!Array.isArray(history)) {
+        history = [];
+      }
+    } catch (error) {
+      console.error(
+        "Unable to load analytics data:",
+        error
+      );
+
+      history = [];
+    }
+
+    // No data
+    if (history.length === 0) {
+      summaryElement.innerHTML =
+        "<p>No quiz data available yet.</p>";
+
+      statsElement.innerHTML = "";
+      return;
+    }
+
+    // =========================================
+    // OVERALL ANALYTICS
+    // =========================================
+
+    let totalQuestions = 0;
+    let totalCorrect = 0;
+
+    history.forEach(result => {
+      const total =
+        Number(result.total) || 0;
+
+      const accuracy =
+        Number(result.accuracy) || 0;
+
+      totalQuestions += total;
+
+      totalCorrect +=
+        Math.round(total * accuracy / 100);
+    });
+
+    const overallAccuracy =
+      totalQuestions > 0
+        ? Math.round(
+            (totalCorrect / totalQuestions) * 100
+          )
+        : 0;
+
+    summaryElement.innerHTML = `
+      <p>
+        📊 Total Attempts:
+        <strong>${history.length}</strong>
+      </p>
+
+      <p>
+        📝 Questions Attempted:
+        <strong>${totalQuestions}</strong>
+      </p>
+
+      <p>
+        🎯 Overall Accuracy:
+        <strong>${overallAccuracy}%</strong>
+      </p>
+    `;
+
+    // =========================================
+    // TOPIC ANALYTICS
+    // =========================================
+
+    const topicStats = {};
+
+    history.forEach(result => {
+      const topic =
+        result.topic || "Unknown";
+
+      if (!topicStats[topic]) {
+        topicStats[topic] = {
+          questions: 0,
+          correct: 0
+        };
+      }
+
+      const total =
+        Number(result.total) || 0;
+
+      const accuracy =
+        Number(result.accuracy) || 0;
+
+      topicStats[topic].questions += total;
+
+      topicStats[topic].correct +=
+        Math.round(total * accuracy / 100);
+    });
+
+    // =========================================
+    // DIFFICULTY ANALYTICS
+    // =========================================
+
+    const difficultyStats = {};
+
+    history.forEach(result => {
+      const difficulty =
+        result.difficulty || "mixed";
+
+      if (!difficultyStats[difficulty]) {
+        difficultyStats[difficulty] = {
+          attempts: 0,
+          accuracyTotal: 0
+        };
+      }
+
+      difficultyStats[difficulty].attempts++;
+
+      difficultyStats[difficulty].accuracyTotal +=
+        Number(result.accuracy) || 0;
+    });
+
+    // =========================================
+    // BUILD ANALYTICS HTML
+    // =========================================
+
+    let html = "";
+
+    html += "<h4>📚 Topic Performance</h4>";
+
+    Object.keys(topicStats).forEach(topic => {
+      const data = topicStats[topic];
+
+      const accuracy =
+        data.questions > 0
+          ? Math.round(
+              (data.correct / data.questions) * 100
+            )
+          : 0;
+
+      html += `
+        <div class="analytics-item">
+          <strong>${topic}</strong>
+          <p>
+            Accuracy: ${accuracy}%
+            (${data.correct}/${data.questions})
+          </p>
+
+          <div class="accuracy-bar">
+            <div
+              class="accuracy-fill"
+              style="width:${accuracy}%">
+            </div>
+          </div>
+        </div>
+      `;
+    });
+
+    html += "<h4>🎯 Difficulty Performance</h4>";
+
+    Object.keys(difficultyStats).forEach(difficulty => {
+      const data =
+        difficultyStats[difficulty];
+
+      const average =
+        data.attempts > 0
+          ? Math.round(
+              data.accuracyTotal /
+              data.attempts
+            )
+          : 0;
+
+      html += `
+        <div class="analytics-item">
+          <strong>
+            ${difficulty.toUpperCase()}
+          </strong>
+
+          <p>
+            Average Accuracy: ${average}%
+          </p>
+
+          <div class="accuracy-bar">
+            <div
+              class="accuracy-fill"
+              style="width:${average}%">
+            </div>
+          </div>
+        </div>
+      `;
+    });
+
+    statsElement.innerHTML = html;
+  }
+// =========================================
+  // KNOWLEDGE GAP DETECTOR
+  // =========================================
+
+  function loadKnowledgeGaps() {
+    const diagnosisElement =
+      document.getElementById("knowledgeGapDiagnosis");
+
+    const summaryElement =
+      document.getElementById("knowledgeGapSummary");
+
+    const statsElement =
+      document.getElementById("knowledgeGapStats");
+
+    const weakQuestionStatsElement =
+      document.getElementById("weakQuestionStats");
+
+    const revisionListElement =
+      document.getElementById("revisionList");
+
+    if (
+      !diagnosisElement ||
+      !summaryElement ||
+      !statsElement ||
+      !weakQuestionStatsElement ||
+      !revisionListElement
+    ) {
+      return;
+    }
+
+    let history = [];
+
+    try {
+      const storedHistory =
+        localStorage.getItem("quizHistory");
+
+      history = storedHistory
+        ? JSON.parse(storedHistory)
+        : [];
+
+      if (!Array.isArray(history)) {
+        history = [];
+      }
+    } catch (error) {
+      console.error(
+        "Unable to load knowledge-gap data:",
+        error
+      );
+
+      history = [];
+    }
+
+    // =========================================
+    // NO QUIZ DATA
+    // =========================================
+
+    if (history.length === 0) {
+      diagnosisElement.textContent =
+        "Take a quiz to discover your knowledge gaps.";
+
+      summaryElement.innerHTML =
+        "<p>No knowledge-gap data available yet.</p>";
+
+      statsElement.innerHTML = "";
+      weakQuestionStatsElement.innerHTML = "";
+
+      revisionListElement.innerHTML =
+        "<p>📚 Your revision list will appear here after quiz attempts.</p>";
+
+      return;
+    }
+
+    // =========================================
+    // TOPIC PERFORMANCE
+    // =========================================
+
+    const topicStats = {};
+
+    history.forEach(result => {
+      const topic =
+        result.topic || "Unknown";
+
+      if (!topicStats[topic]) {
+        topicStats[topic] = {
+          attempts: 0,
+          questions: 0,
+          correct: 0,
+          wrong: 0
+        };
+      }
+
+      const total =
+        Number(result.total) || 0;
+
+      const accuracy =
+        Number(result.accuracy) || 0;
+
+      const correct =
+        Math.round(
+          total * accuracy / 100
+        );
+
+      topicStats[topic].attempts++;
+      topicStats[topic].questions += total;
+      topicStats[topic].correct += correct;
+      topicStats[topic].wrong +=
+        Math.max(0, total - correct);
+    });
+
+    // =========================================
+    // FIND WEAKEST TOPIC
+    // =========================================
+
+    let weakestTopic = null;
+    let weakestAccuracy = 101;
+
+    Object.keys(topicStats).forEach(topic => {
+      const data = topicStats[topic];
+
+      if (data.questions === 0) {
+        return;
+      }
+
+      const accuracy =
+        Math.round(
+          (data.correct / data.questions) * 100
+        );
+
+      if (accuracy < weakestAccuracy) {
+        weakestAccuracy = accuracy;
+        weakestTopic = topic;
+      }
+    });
+
+    // =========================================
+    // DIAGNOSIS
+    // =========================================
+
+    if (weakestTopic) {
+      if (weakestAccuracy < 50) {
+        diagnosisElement.textContent =
+          `🚨 Major knowledge gap detected in "${weakestTopic}". Focus on revision before attempting harder questions.`;
+      } else if (weakestAccuracy < 70) {
+        diagnosisElement.textContent =
+          `⚠️ "${weakestTopic}" needs improvement. Revise the core concepts and practice more questions.`;
+      } else if (weakestAccuracy < 85) {
+        diagnosisElement.textContent =
+          `📈 "${weakestTopic}" is your current weakest area. A little more practice can strengthen it.`;
+      } else {
+        diagnosisElement.textContent =
+          "🌟 Great work! Your overall topic performance is strong.";
+      }
+    }
+
+    // =========================================
+    // SUMMARY
+    // =========================================
+
+    const totalAttempts = history.length;
+
+    const totalQuestions =
+      history.reduce(
+        (sum, result) =>
+          sum + (Number(result.total) || 0),
+        0
+      );
+
+    const totalWrong =
+      Object.values(topicStats).reduce(
+        (sum, topic) =>
+          sum + topic.wrong,
+        0
+      );
+
+    summaryElement.innerHTML = `
+      <p>
+        🧠 Topics Tested:
+        <strong>${Object.keys(topicStats).length}</strong>
+      </p>
+
+      <p>
+        📝 Total Questions:
+        <strong>${totalQuestions}</strong>
+      </p>
+
+      <p>
+        ❌ Estimated Wrong Answers:
+        <strong>${totalWrong}</strong>
+      </p>
+
+      <p>
+        🔄 Quiz Attempts:
+        <strong>${totalAttempts}</strong>
+      </p>
+    `;
+
+    // =========================================
+    // TOPIC GAP STATS
+    // =========================================
+
+    let topicHTML = "";
+
+    Object.keys(topicStats)
+      .sort((a, b) => {
+        const accuracyA =
+          topicStats[a].questions > 0
+            ? topicStats[a].correct /
+              topicStats[a].questions
+            : 0;
+
+        const accuracyB =
+          topicStats[b].questions > 0
+            ? topicStats[b].correct /
+              topicStats[b].questions
+            : 0;
+
+        return accuracyA - accuracyB;
+      })
+      .forEach(topic => {
+        const data = topicStats[topic];
+
+        const accuracy =
+          data.questions > 0
+            ? Math.round(
+                (data.correct /
+                  data.questions) * 100
+              )
+            : 0;
+
+        let status = "🟢 Strong";
+
+        if (accuracy < 50) {
+          status = "🔴 Weak";
+        } else if (accuracy < 70) {
+          status = "🟠 Needs Revision";
+        } else if (accuracy < 85) {
+          status = "🟡 Improving";
+        }
+
+        topicHTML += `
+          <div class="analytics-item">
+            <strong>${topic}</strong>
+
+            <p>
+              ${status} • ${accuracy}% accuracy
+            </p>
+
+            <div class="accuracy-bar">
+              <div
+                class="accuracy-fill"
+                style="width:${accuracy}%">
+              </div>
+            </div>
+
+            <small>
+              ${data.correct}/${data.questions}
+              correct
+            </small>
+          </div>
+        `;
+      });
+
+    statsElement.innerHTML = topicHTML;
+
+    // =========================================
+    // REPEATED WRONG ANSWERS
+    // =========================================
+
+    const wrongQuestionMap = {};
+
+    history.forEach(result => {
+      if (
+        !Array.isArray(result.wrongAnswers)
+      ) {
+        return;
+      }
+
+      result.wrongAnswers.forEach(wrong => {
+        if (!wrong || !wrong.question) {
+          return;
+        }
+
+        const key = wrong.question;
+
+        if (!wrongQuestionMap[key]) {
+          wrongQuestionMap[key] = {
+            question: wrong.question,
+            correctAnswer:
+              wrong.correctAnswer || "Unknown",
+            topic:
+              wrong.topic || "Unknown",
+            count: 0
+          };
+        }
+
+        wrongQuestionMap[key].count++;
+      });
+    });
+
+    const repeatedWrongQuestions =
+      Object.values(wrongQuestionMap)
+        .filter(item => item.count >= 2)
+        .sort((a, b) => b.count - a.count);
+
+    // =========================================
+    // WEAK QUESTION SUMMARY
+    // =========================================
+
+    weakQuestionStatsElement.innerHTML = `
+      <p>
+        🔁 Repeatedly missed questions:
+        <strong>${repeatedWrongQuestions.length}</strong>
+      </p>
+    `;
+
+    // =========================================
+    // REVISION LIST
+    // =========================================
+
+    if (repeatedWrongQuestions.length === 0) {
+      revisionListElement.innerHTML = `
+        <p>
+          ✅ No repeatedly missed questions detected yet.
+          Keep practicing!
+        </p>
+      `;
+    } else {
+      revisionListElement.innerHTML = `
+        <h4>📖 Recommended Revision</h4>
+
+        ${repeatedWrongQuestions
+          .slice(0, 10)
+          .map((item, index) => `
+            <div class="analytics-item">
+              <strong>
+                ${index + 1}. ${item.question}
+              </strong>
+
+              <p>
+                📚 Topic: ${item.topic}
+              </p>
+
+              <p>
+                ❌ Missed ${item.count} times
+              </p>
+
+              <small>
+                ✅ Correct answer:
+                ${item.correctAnswer}
+              </small>
+            </div>
+          `)
+          .join("")}
+      `;
+    }
+  }
+// =========================================
+  // MASTERY DASHBOARD
+  // =========================================
+
+  function loadMasteryDashboard() {
+    const summaryElement =
+      document.getElementById("masterySummary");
+
+    const statsElement =
+      document.getElementById("masteryStats");
+
+    if (!summaryElement || !statsElement) {
+      return;
+    }
+
+    let history = [];
+
+    try {
+      const storedHistory =
+        localStorage.getItem("quizHistory");
+
+      history = storedHistory
+        ? JSON.parse(storedHistory)
+        : [];
+
+      if (!Array.isArray(history)) {
+        history = [];
+      }
+    } catch (error) {
+      console.error(
+        "Unable to load mastery data:",
+        error
+      );
+
+      history = [];
+    }
+
+    // =========================================
+    // NO DATA
+    // =========================================
+
+    if (history.length === 0) {
+      summaryElement.innerHTML =
+        "<p>Complete a quiz to start building your mastery profile.</p>";
+
+      statsElement.innerHTML = "";
+      return;
+    }
+
+    // =========================================
+    // CALCULATE MASTERY
+    // =========================================
+
+    const topicStats = {};
+
+    history.forEach(result => {
+      const topic =
+        result.topic || "Unknown";
+
+      if (!topicStats[topic]) {
+        topicStats[topic] = {
+          attempts: 0,
+          accuracyTotal: 0,
+          bestAccuracy: 0
+        };
+      }
+
+      const accuracy =
+        Number(result.accuracy) || 0;
+
+      topicStats[topic].attempts++;
+      topicStats[topic].accuracyTotal += accuracy;
+
+      if (
+        accuracy >
+        topicStats[topic].bestAccuracy
+      ) {
+        topicStats[topic].bestAccuracy =
+          accuracy;
+      }
+    });
+
+    // =========================================
+    // OVERALL MASTERY
+    // =========================================
+
+    const topics =
+      Object.keys(topicStats);
+
+    const overallMastery =
+      topics.length > 0
+        ? Math.round(
+            topics.reduce(
+              (sum, topic) =>
+                sum +
+                (
+                  topicStats[topic].accuracyTotal /
+                  topicStats[topic].attempts
+                ),
+              0
+            ) / topics.length
+          )
+        : 0;
+
+    let masteryLevel = "🌱 Beginner";
+
+    if (overallMastery >= 90) {
+      masteryLevel = "🏆 Mastery";
+    } else if (overallMastery >= 75) {
+      masteryLevel = "🔥 Advanced";
+    } else if (overallMastery >= 60) {
+      masteryLevel = "📈 Developing";
+    }
+
+    summaryElement.innerHTML = `
+      <p>
+        🧠 Overall Mastery:
+        <strong>${overallMastery}%</strong>
+      </p>
+
+      <p>
+        🎯 Level:
+        <strong>${masteryLevel}</strong>
+      </p>
+
+      <p>
+        📚 Topics Tracked:
+        <strong>${topics.length}</strong>
+      </p>
+    `;
+
+    // =========================================
+    // TOPIC MASTERY BREAKDOWN
+    // =========================================
+
+    let masteryHTML = "";
+
+    topics
+      .sort((a, b) => {
+        const masteryA =
+          topicStats[a].accuracyTotal /
+          topicStats[a].attempts;
+
+        const masteryB =
+          topicStats[b].accuracyTotal /
+          topicStats[b].attempts;
+
+        return masteryB - masteryA;
+      })
+      .forEach(topic => {
+        const data =
+          topicStats[topic];
+
+        const average =
+          Math.round(
+            data.accuracyTotal /
+            data.attempts
+          );
+
+        let status = "🟢 Strong";
+
+        if (average < 50) {
+          status = "🔴 Needs Major Revision";
+        } else if (average < 70) {
+          status = "🟠 Needs Practice";
+        } else if (average < 85) {
+          status = "🟡 Good Progress";
+        }
+
+        masteryHTML += `
+          <div class="analytics-item">
+            <strong>${topic}</strong>
+
+            <p>
+              ${status}
+            </p>
+
+            <p>
+              Average: ${average}%
+              • Best: ${data.bestAccuracy}%
+            </p>
+
+            <div class="accuracy-bar">
+              <div
+                class="accuracy-fill"
+                style="width:${average}%">
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+    statsElement.innerHTML =
+      masteryHTML;
+  }
+
+  // =========================================
+  // CLEAR QUIZ HISTORY
+  // =========================================
+
+  function clearQuizHistory() {
+    const confirmed =
+      confirm(
+        "Are you sure you want to clear all quiz history?"
+      );
+
+    if (!confirmed) {
+      return;
+    }
+
+    localStorage.removeItem("quizHistory");
+
+    loadQuizHistory();
+    loadAnalytics();
+    loadKnowledgeGaps();
+    loadMasteryDashboard();
+  }
+
+  // =========================================
+  // PAGE INITIALIZATION
+  // =========================================
+
+  loadQuizHistory();
+  loadAnalytics();
+  loadKnowledgeGaps();
+  loadMasteryDashboard();
 
 </script>
 
 </body>
-
 </html>
