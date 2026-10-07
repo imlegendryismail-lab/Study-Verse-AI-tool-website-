@@ -2638,6 +2638,138 @@ ${question}
 
 }
 
+// =====================================
+// STEP 12A: TOPIC MASTERY
+// =====================================
+
+function loadMasteryDashboard() {
+
+const results =
+JSON.parse(localStorage.getItem("quizResults")) || [];
+
+const summary =
+document.getElementById("masterySummary");
+
+const stats =
+document.getElementById("masteryStats");
+
+
+if (results.length === 0) {
+
+summary.textContent =
+"Complete quizzes to build your topic mastery.";
+
+stats.innerHTML = "";
+
+return;
+
+}
+
+
+const topicData = {};
+
+
+results.forEach(function(result) {
+
+const topic =
+result.topic || "Unknown";
+
+const accuracy =
+Number(result.accuracy || 0);
+
+
+if (!topicData[topic]) {
+
+topicData[topic] = {
+attempts: 0,
+accuracy: 0
+};
+
+}
+
+
+topicData[topic].attempts++;
+
+topicData[topic].accuracy += accuracy;
+
+});
+
+
+let masteryHTML = "";
+
+
+Object.keys(topicData).forEach(function(topic) {
+
+const average =
+Math.round(
+topicData[topic].accuracy /
+topicData[topic].attempts
+);
+
+
+let level = "";
+let icon = "";
+
+
+if (average >= 80) {
+
+level = "Mastered";
+icon = "🟢";
+
+} else if (average >= 60) {
+
+level = "Developing";
+icon = "🟡";
+
+} else {
+
+level = "Needs Revision";
+icon = "🔴";
+
+}
+
+
+masteryHTML += `
+
+<div class="analytics-row">
+
+<div>
+
+<strong>
+${icon} ${topic}
+</strong>
+
+<div class="analytics-bar">
+
+<div
+class="analytics-bar-fill"
+style="width:${average}%"
+></div>
+
+</div>
+
+</div>
+
+<span>
+${level}
+</span>
+
+</div>
+
+`;
+
+});
+
+
+summary.textContent =
+"Your current mastery is based on your quiz performance.";
+
+
+stats.innerHTML =
+masteryHTML;
+
+}
+
 </script>
 
 </body>
