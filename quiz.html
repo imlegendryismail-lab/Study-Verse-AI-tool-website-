@@ -525,7 +525,6 @@ function updateTopicOptions() {
   if ([...select.options].some(option => option.value === previous)) select.value = previous;
 }
 </script>
-<script>
 function startQuiz() {
   const filters = currentFilters();
   let pool = QUESTION_BANK.filter(q =>
