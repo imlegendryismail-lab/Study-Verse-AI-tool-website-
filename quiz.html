@@ -635,8 +635,11 @@ function renderQuestion() {
   $("nextBtn").textContent =
     session.index === session.questions.length - 1 ? "View results" : "Next question";
 
-  if (isChecked) showFeedback(q);
-  else $("feedbackBox").className = "q-feedback q-hidden";
+  if (isChecked && session.mode !== "exam") {
+  showFeedback(q);
+} else {
+  $("feedbackBox").className = "q-feedback q-hidden";
+} 
 
   setStatus("answerStatus",isChecked ? "Answer recorded." : "");
 }
@@ -657,37 +660,40 @@ function showFeedback(q) {
   setVisible("feedbackBox",true);
 }
 
+
 function checkAnswer() {
   if (!session || session.completed) return;
+
   const q = session.questions[session.index];
   const selected = session.answers[q.id];
 
   if (selected === undefined) {
-    setStatus("answerStatus","Choose an answer first, or end the session to record it as skipped.");
+    setStatus(
+      "answerStatus",
+      "Choose an answer first."
+    );
     return;
   }
+
+  // Exam mode records the selected answer without
+  // revealing correctness before the final results.
+  if (session.mode === "exam") {
+    session.checked[q.id] = true;
+
+    if (session.index < session.questions.length - 1) {
+      session.index++;
+      renderQuestion();
+    } else {
+      finishQuiz(false);
+    }
+
+    return;
+  }
+
+  // Practice and learn modes reveal feedback.
   session.checked[q.id] = true;
   renderQuestion();
-  setStatus("answerStatus","Answer checked.");
-}
-
-function revealHint() {
-  if (!session || session.completed) return;
-  const q = session.questions[session.index];
-  session.hints[q.id] = true;
-  renderQuestion();
-}
-
-function nextQuestion() {
-  if (!session || session.completed) return;
-  if (!session.checked[session.questions[session.index].id]) return;
-
-  if (session.index < session.questions.length - 1) {
-    session.index++;
-    renderQuestion();
-  } else {
-    finishQuiz(false);
-  }
+  setStatus("answerStatus", "Answer checked.");
 }
 
 function quitQuiz() {
