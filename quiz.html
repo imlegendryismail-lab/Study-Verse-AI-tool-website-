@@ -556,6 +556,7 @@ function startQuiz() {
     filterTopic:filters.topic,
     filterDifficulty:filters.difficulty,
     timed:Number($("timeLimit").value) > 0,
+timeLimitSeconds: Number($("timeLimit").value) * 60,
     completed:false
   };
 
